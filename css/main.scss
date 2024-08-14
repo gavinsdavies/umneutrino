@@ -7,9 +7,7 @@
  * @see https://github.com/webpack-contrib/sass-loader#imports
  */
 // @import "~some-node-module";
-$font-prefix: "~@ibm/plex";
-
-@import "~@ibm/plex/scss/ibm-plex.scss";    
+@import "../node_modules/@ibm/plex/scss/ibm-plex.scss";
 @import "bootstrap";
 
 img { margin-bottom: 24px; 
@@ -17,13 +15,28 @@ img { margin-bottom: 24px;
     border-radius:2%;
 }
 
-
 body {
 	padding-top: 70px;
 	background-color: #282A36; /* Lancaster off-white; */
-	font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
 	font-style: italicnormal;
 	text-rendering: optimizeLegibility;
+	color: #f8f8f2;
+}
+
+h1 {
+	color: #ff5555
+}
+h2 {
+	color: #bd93f9
+}
+h3 {
+	color: #ff79c6
+}
+h4 {
+	color: #ffb86c
+}
+h5 {
+	color: #44475a
 }
 
 figcaption {
@@ -111,6 +124,18 @@ firstp {
 	border-color: #555656; /* Lancaster dark gray; */
 }
 
+
 .panel {
-	background-color: #555656; /* Lancaster light gray; */
+	border: 0px;
+}
+.panel-footer {
+	background-color: #a56561; /* Lancaster light gray; */
+}
+
+.panel-footer a {
+	color: #000000; /* Lancaster off-white; */
+}
+
+.well p{
+	color: #6272a4;
 }
