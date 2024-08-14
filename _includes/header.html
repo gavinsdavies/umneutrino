@@ -8,7 +8,12 @@
 		<span class="icon-bar"></span>
 	  </button>
 	
-    <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">Allan Lab @ Leiden &rarr; University of Munich (LMU)</a>
+    <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">
+		{{ if eq .Params.custom_title_enabled true }}
+		  {{ .Params.custom_title_value }}
+	  	{{ else }}
+		  {{ "UM Neutrino @ the University of Mississippi (UM)" }}
+	  	{{ end }}</a>
 	</div>
 	<div class="collapse navbar-collapse" id="navbar-collapse-1">
 	  <ul class="nav navbar-nav navbar-right">

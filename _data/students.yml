@@ -1,11 +1,8 @@
-#- name:
-#  photo: rock.jpg
-#  info:
-#  email:
-#  number_educ:
-#  education1:
-#  education2:
-#  education3:
-#  education4:
+- name: Kaylyn Beard
+  photo: bio-photo.jpg
+  info: B.Sc. student, started May 2023
+  email: 
+  number_educ: 1
+  education1: 
 
 

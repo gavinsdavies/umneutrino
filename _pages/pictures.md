@@ -1,18 +1,17 @@
 ---
-title: "Allan Lab - Pictures"
+title: "UM Neutrino - Pictures"
 layout: piclay
-excerpt: "Allan Lab -- Pictures"
+excerpt: "UM Neutrino -- Pictures"
 permalink: /pictures/
 ---
 
 # Pictures
-Jump to: [Leiden](#leiden), [ETHZ](#ethz), [Cornell](#cornell), [St Andrews](#st-andrews)
+Jump to: [Oxford](#oxford), [Outreach](#outreach)
 
 
-## Leiden
+## Oxford
 
-#### Timelapse of our STM assembling [(see LION news item)](https://www.physics.leidenuniv.nl/index.php?id=11573&news=867&type=lion&ln=EN):
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3iKvUMv1h5A" frameborder="0" allowfullscreen></iframe>
+#### Work in progress
 
 #### Gallery
 (Right-click *'view image'* to see a larger image.)
@@ -53,26 +52,14 @@ Jump to: [Leiden](#leiden), [ETHZ](#ethz), [Cornell](#cornell), [St Andrews](#st
 
 <p> &nbsp; </p>
 
-First advertisement.
+Our first group photo.
 <figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/WebpageLeiden_red.jpg" width="60%" >
+<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/.jpg" width="60%" >
 </figure>
 
 
-## ETHZ
-From the [group of Andreas Wallraff](http://www.qudev.ethz.ch/).
+## Outreach
+Work in progress
 <figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/WebpageETH_red.jpg" width="60%">
-</figure>
-
-## Cornell
-From the [group of Seamus JC Davis](http://davisgroup.lassp.cornell.edu).
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/WebpageCornell_red.jpg" width="60%">
-</figure>
-
-## St Andrews
-From the [group of Felix Baumberger](http://dqmp.unige.ch/baumberger/) (now at University of Geneva).
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/WebpageSTA_red.jpg" width="60%">
+<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/.jpg" width="60%">
 </figure>

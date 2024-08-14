@@ -1,6 +1,15 @@
 ---
 ---
-    
+/**
+ * Import npm dependencies
+ *
+ * Prefix your imports with `~` to grab from node_modules/
+ * @see https://github.com/webpack-contrib/sass-loader#imports
+ */
+// @import "~some-node-module";
+$font-prefix: "~@ibm/plex";
+
+@import "~@ibm/plex/scss/ibm-plex.scss";    
 @import "bootstrap";
 
 img { margin-bottom: 24px; 
@@ -11,6 +20,10 @@ img { margin-bottom: 24px;
 
 body {
 	padding-top: 70px;
+	background-color: #282A36; /* Lancaster off-white; */
+	font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+	font-style: italicnormal;
+	text-rendering: optimizeLegibility;
 }
 
 figcaption {
@@ -81,7 +94,7 @@ firstp {
 }
 
 
-/* Carusel */
+/* Carousel */
 
 .carousel {
     border-radius: 3px 3px 3px 3px;
@@ -91,3 +104,13 @@ firstp {
     margin-right: 30px;
 }
 
+/* Colour overrides */
+.navbar-default .navbar-brand .navbard-fixed-top {
+	color: #555656 ; /* Lancaster dark gray; */
+	background-color: #555656; /* Lancaster light gray; */
+	border-color: #555656; /* Lancaster dark gray; */
+}
+
+.panel {
+	background-color: #555656; /* Lancaster light gray; */
+}

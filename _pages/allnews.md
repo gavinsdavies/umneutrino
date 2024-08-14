@@ -1,7 +1,7 @@
 ---
 title: "News"
 layout: textlay
-excerpt: "Allan Lab at Leiden University."
+excerpt: "UM Neutrino at University of Mississippi."
 sitemap: false
 permalink: /allnews.html
 ---
