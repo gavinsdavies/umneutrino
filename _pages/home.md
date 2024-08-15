@@ -18,13 +18,13 @@ permalink: /
     </div>
     <div class="carousel-inner" markdown="0">
         <div class="carousel-item active">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/.jpg" class="d-block w-100" alt="...">
+            <img src="{{ site.url }}{{ site.baseurl }}/assets/images/slider/LewisHall.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/.jpg" class="d-block w-100" alt="...">
+            <img src="{{ site.url }}{{ site.baseurl }}/assets/images/slider/LewisHall.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/.jpg" class="d-block w-100" alt="...">
+            <img src="{{ site.url }}{{ site.baseurl }}/assets/images/slider/LewisHall.jpg" class="d-block w-100" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
