@@ -12,12 +12,17 @@ img { margin-bottom: 24px;
 
 
 body {
-	padding-top: 70px;
 	background-color: #282A36; /* Lancaster off-white; */
 	font-family: 'Roboto', sans-serif;
 	font-style: italicnormal;
 	text-rendering: optimizeLegibility;
 	color: #f8f8f2;
+}
+
+.navbar {
+	position: fixed; /* Set the navbar to fixed position */
+	top: 0; /* Position the navbar at the top of the page */
+	width: 100%; /* Full width */
 }
 
 h1 {
@@ -42,14 +47,7 @@ figcaption {
     margin-bottom: 20px;
 }
 
-/* Top navigation bar */
-p.byline {
-	text-align: center;
-	font-size: 18px;
-	line-height: 36px;
-	margin-top: -24px;
-	margin-bottom: 48px;
-}
+
 
 pubtit {
 	font-weight: bold;
@@ -130,3 +128,4 @@ firstp {
 .card p{
 	color: #6272a4;
 }
+
