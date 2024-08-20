@@ -46,8 +46,11 @@ We are grateful for funding and support from the [University of Mississippi](htt
 
 
 
-
-<figure class="fourth">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/Logo_UM.jpg" style="width: 210px">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/logopic/Logo_DOE.jpg" style="width: 110px">
-</figure>
+<div class="logos-container" markdown="0">
+  <figure>
+    <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/University_of_Mississippi_logo.png" style="width: 210px" class="figure-img img-fluid rounded float-left">
+  </figure>
+  <figure>
+    <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/DOE_Color_Seal_Green_Logo_Clear_2860×719.png" style="width: 210px" class="figure-img img-fluid rounded float-right">
+  </figure>
+</div>

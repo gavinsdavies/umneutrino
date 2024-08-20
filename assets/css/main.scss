@@ -11,7 +11,6 @@ img {
     border-radius:2%;
 }
 
-
 body {
 	background-color: #282A36; /* Lancaster off-white; */
 	text-rendering: optimizeLegibility;
@@ -22,6 +21,7 @@ body {
 	position: fixed; /* Set the navbar to fixed position */
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
+	padding: 10px 20px; /* Reduces padding inside the navbar */
 }
 
 h1 {
@@ -45,8 +45,6 @@ figcaption {
     margin-top: -20px;
     margin-bottom: 20px;
 }
-
-
 
 pubtit {
 	font-weight: bold;
@@ -155,4 +153,21 @@ firstp {
 }
 .carousel-control-next {
     right: -60px;
+}
+
+.logos-container {
+	display: flex;
+    justify-content: center;
+	align-items: center;
+	margin-bottom: 15px; /* Adds spacing below the image container */
+}
+
+.logos-container figure {
+    margin: 0 30px; /* Adds spacing between images */
+}
+
+.logos-container img {
+	max-width: 100%;
+    height: auto;
+    display: block;
 }
