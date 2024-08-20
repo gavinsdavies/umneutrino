@@ -5,16 +5,15 @@
 @import "bootswatch/dist/darkly/bootswatch";
 @import "base";
 
-img { margin-bottom: 24px; 
-     margin-top: 17px; 
+img { 
+	margin-bottom: 24px; 
+    margin-top: 17px; 
     border-radius:2%;
 }
 
 
 body {
 	background-color: #282A36; /* Lancaster off-white; */
-	font-family: 'Roboto', sans-serif;
-	font-style: italicnormal;
 	text-rendering: optimizeLegibility;
 	color: #f8f8f2;
 }
@@ -129,3 +128,31 @@ firstp {
 	color: #6272a4;
 }
 
+/* Carousel overrides */
+.carousel {
+	position: relative;
+}
+.carousel-item {
+    height: 320px;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+.carousel-indicators {
+    bottom: -5px;
+}
+.carousel-control-prev, .carousel-control-next {
+	position: absolute;
+    top: 50%;
+    transform: TranslateY(-50%);
+}
+.carousel-control-prev {
+    right: auto;
+    left: -60px;
+}
+.carousel-control-next {
+    right: -60px;
+}
