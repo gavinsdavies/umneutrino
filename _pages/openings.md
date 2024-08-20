@@ -32,7 +32,8 @@ If you are a Master student at University of Mississippi looking for a Master pr
 ### B.Sc. / Master students from elsewhere
 If you are interested in pursuing a Master degree at University of Mississippi, see our [graduate program](https://physics.olemiss.edu/graduate-program/). 
 
-
+<!--
 <figure>
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/picpic/joinUs.jpg" width="95%">
 </figure>
+-->
