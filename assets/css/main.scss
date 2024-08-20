@@ -22,6 +22,7 @@ body {
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
 	padding: 10px 20px; /* Reduces padding inside the navbar */
+	margin-bottom: 0; /* Removes any margin below the navbar */
 }
 
 h1 {
@@ -57,6 +58,8 @@ firstp {
   margin-right: auto;
   margin-left: auto;
   max-width: 1000px; /* or 950px */
+  padding-top: 0; /* Removes any padding at the top of the container */
+  margin-top: 0; /* Removes any margin at the top of the container */
 }
 
 /* Home, News */
