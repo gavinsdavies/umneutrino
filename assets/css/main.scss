@@ -174,3 +174,25 @@ firstp {
     height: auto;
     display: block;
 }
+
+.pub-card {
+	overflow: visible; /* Or remove this if `hidden` is set */
+    display: block; /* Ensure it's a block-level container */
+}
+
+.card-image {
+    float: left; /* Floats the image to the left, allowing text to wrap around it */
+    margin-right: 15px; /* Adds space between the image and the text */
+    width: 150px; /* Sets the width of the image */
+    height: auto; /* Maintains the aspect ratio of the image */
+}
+
+.card-content {
+    overflow: hidden; /* Ensures that the content wraps around the floated image */
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
