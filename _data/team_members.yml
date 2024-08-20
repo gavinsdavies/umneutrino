@@ -1,5 +1,5 @@
 - name: Dr. Gavin S. Davies
-  photo: bio-photo.jpg
+  photo: Gavin.jpg
   info: Assistant Professor, started Aug 2019
   email: gavin.s.davies@gmail.com
   number_educ: 4
@@ -13,7 +13,7 @@
   info: Postdoc, started May 2021
   email: jeffrey.kleykamp@gmail.com
   number_educ: 1
-  education1: PhD Rochester University
+  education1: Ph.D., University of Rochester
 
 - name: Luiz R. Prais
   photo: bio-photo.jpg
@@ -24,21 +24,21 @@
 
 - name: Andrew Dye
   photo: bio-photo.jpg
-  info: Ph.D. student, started
+  info: Ph.D. student, started February 2021
   email: 
   number_educ: 1
   education1: 
 
 - name: Bishnu Acharya
   photo: bio-photo.jpg
-  info: Ph.D. student, started
+  info: Ph.D. student, started February 2021
   email: 
   number_educ: 1
   education1: 
 
 - name: Xiaoyan Huang
   photo: bio-photo.jpg
-  info: Ph.D., started
+  info: Ph.D., started November 2022
   email: email
   number_educ: 1
   education1: 
