@@ -34,6 +34,6 @@ If you are interested in pursuing a Master degree at University of Mississippi, 
 
 <!--
 <figure>
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/picpic/joinUs.jpg" width="95%">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/picpic/joinUs.png" width="95%">
 </figure>
 -->
