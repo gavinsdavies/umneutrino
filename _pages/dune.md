@@ -8,7 +8,7 @@ permalink: /research/dune/
 
 <div class="d-flex justify-content-between align-items-center">
 # DUNE
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/DUNE.png"  alt="DUNE experiment logo" class="img-responsive" style="width: 50px; height: 50px; float: right;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/DUNE.png"  alt="DUNE experiment logo" class="img-responsive" style="height: 50px; float: right;">
 </div>
 
 Work-in-progress, please standby (Sept. 02, 2024)
