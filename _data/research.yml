@@ -2,13 +2,17 @@
   blurb: The NuMI Off-axis electron neutrino Appearance experiment
   url: https://novaexperiment.fnal.gov
   website: novaexperiment.fnal.gov
+  photo: NOvA.jpg
+
 
 - name: DUNE
   blurb: The Deep Underground Neutrino Experiment
   url: https://dunescience.org
   website: dunescience.org
+  photo: DUNE.jpg
 
 - name: EMPHATIC
   blurb: Experiment to Measure the Production of Hadrons At a Testbeam In Chicagoland
   url: https://emphatic.fnal.gov
   website: emphatic.fnal.gov
+  photo: EMPHATIC.jpg
