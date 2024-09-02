@@ -1,6 +1,6 @@
 ---
 title: "UM Neutrino - Research"
-layout: textlay
+layout: research
 excerpt: "UM Neutrino -- Research"
 sitemap: false
 permalink: /research/
