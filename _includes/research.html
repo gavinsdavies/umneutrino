@@ -1,0 +1,9 @@
+<div class="card mb-4">
+    <div class="card-body">
+        <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/{{ experiment.photo }}" class="card-img-top" alt="NOvA logo" style="width: 70%; float: center; margin: 0px">
+        <h4 class="card-title text-center">{{ experiment.name }}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ experiment.blurb }}</h6>
+        <p class="card-text">{{ experiment.blurb | markdownify }} </p>
+        <a class="card-link text-center" href="{{ experiment.url }}">{{ experiment.website }}</a>
+    </div> 
+</div>  

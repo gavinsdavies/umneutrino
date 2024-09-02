@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
-<div id="research" class="col-sm-12">
-  {{ content }}
+{{ content }}
+{% for experiment in site.data.research %}
+<div id="research" class="col-md-4">
+  <!--<p>Debug: {{ forloop.index }} - {{ experiment.name }} - {{ experiment.blurb }} </p>-->
+  {% include research.html %}
 </div>
+{% endfor %}
