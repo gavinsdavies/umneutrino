@@ -28,8 +28,22 @@ Work-in-progress, please standby (Sept. 02, 2024)
     {% endif %}
 {% endfor %}
 
-<h4>{{ member_names }}</h4>
+{% assign smembers = site.data.students %}
+{% assign smember_names = "" %}
 
+{% for smember in smembers %}
+    {% if smember.experiments contains target_experiment %}
+        {% if smember_names != "" %}
+            {% assign smember_names = smember_names | append: ", " %}
+        {% endif %}
+    {% assign smember_names = smember_names | append: smember.name %}  
+    {% endif %}
+{% endfor %}
+<h2>Staff</h2>
+<h4>{{ member_names }}</h4>
+{% if smember_names != "" %}
+<h2>Undergraduate(s)</h2> <h4>{{ smember_names }}</h4>
+ {% endif %}
 <!--
 <h1>Members and Their Experiments</h1>
 
