@@ -2,7 +2,7 @@
 title: "UM Neutrino - NOvA Research"
 layout: experiment
 excerpt: "UM Neutrino -- NOvA Research"
-sitemap: true
+sitemap: false
 permalink: /research/nova/
 ---
 
@@ -17,18 +17,29 @@ Work-in-progress, please standby (Sept. 02, 2024)
 
 {% assign target_experiment = "nova" %}
 {% assign members = site.data.team_members %}
-{% assign member_names = "" %}
+{% assign member_links = "" %}
 
 {% for member in members %}
     {% if member.experiments contains target_experiment %}
-        {% if member_names != "" %}
-            {% assign member_names = member_names | append: ", " %}
+        {% if member_links != "" %}
+            {% assign member_links = member_links | append: ", " %}
         {% endif %}
-    {% assign member_names = member_names | append: member.name %}  
+    {% assign member_anchor = member.name | slugify %}
+    {% assign link = "<a href='#" | append: member_anchor | append: "'>" | append: member.name | append: "</a>" %}
+    {% assign member_links = member_links | append: link %}
     {% endif %}
 {% endfor %}
 
-<h4>{{ member_names }}</h4>
+<h4>{{ member_links | safe }}</h4>
+
+<!-- Render Member Sections -->
+{% for member in members %}
+  {% if member.experiments contains target_experiment %}
+    <p>Rendering section for: {{ member.name }}</p>
+    <h4 id="{{ member.name | slugify }}">{{ member.name }}</h4>
+    <p>Details about {{ member.name }}.</p>
+  {% endif %}
+{% endfor %}
 
 <!--
 <h1>Members and Their Experiments</h1>
