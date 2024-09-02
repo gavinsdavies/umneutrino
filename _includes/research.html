@@ -1,0 +1,8 @@
+<div class="card mb-4 clearfix">
+    <div class="card-body">
+        <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/{{ experiment.photo }}"  alt="{{experiment.name }} experiment logo" class="img-responsive" width="50%" style="float: left; margin: 10px ">
+        <h6 class="card-subtitle mb-2 text-muted">{{ experiment.name }}: {{ experiment.fullname}}</h6>
+        <p class="card-text">{{ experiment.blurb | markdownify }} </p>
+        <a class="card-link text-center" href="{{ experiment.url }}">{{ experiment.website }}</a>
+    </div> 
+</div>  

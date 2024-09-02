@@ -1,0 +1,21 @@
+- name: NOvA
+  fullname: The NuMI Off-axis electron neutrino Appearance experiment
+  blurb: ...uses the world's most powerful neutrino beam to reveal the secrets of the neutrino and its role in the universe.
+  url: https://novaexperiment.fnal.gov
+  website: novaexperiment.fnal.gov
+  photo: NOvA.png
+
+
+- name: DUNE
+  fullname: The Deep Underground Neutrino Experiment
+  blurb: ...is a leading-edge, international experiment for neutrino science and proton decay studies.
+  url: https://dunescience.org
+  website: dunescience.org
+  photo: DUNE.png
+
+- name: EMPHATIC
+  fullname: Experiment to Measure the Production of Hadrons At a Testbeam In Chicagoland
+  blurb: ...is a testbeam experiment at Fermilab that studies the production of hadrons in neutrino interactions.
+  url: https://emphatic.fnal.gov
+  website: emphatic.fnal.gov
+  photo: EMPHATIC.png
