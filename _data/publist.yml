@@ -5,7 +5,7 @@
   authors: M. A. Acero et al. (NOvA Collaboration)
   link:
     url: https://arxiv.org/abs/2403.07266
-    display: arXiv:2403.07266
+    display: arXiv:2403.07266 - Submitted 12 Mar 2024
   highlight: 1
 
 - title: "Expanding neutrino oscillation parameter measurements in NOvA using a Bayesian approach"
@@ -15,4 +15,13 @@
   link:
     url: https://doi.org/10.1103/PhysRevD.110.012005
     display: Phys. Rev. D 110, 012005 – Published 10 July 2024
+  highlight: 1
+
+- title: "Search for Active-Sterile Antineutrino Mixing Using Neutral-Current Interactions with the NOvA Experiment"
+  image: 2021-09-27_07-14-28.png
+  description: This Letter reports results from the first long-baseline search for sterile antineutrinos mixing in an accelerator-based antineutrino-dominated beam. The rate of neutral-current interactions in the two NOvA detectors, at distances of 1 and 810 km from the beam source, is analyzed using an exposure of 12.51×10<sup>20</sup> protons-on-target from the NuMI beam at Fermilab running in antineutrino mode. A total of 121 of neutral-current candidates are observed at the far detector, compared to a prediction of 122 ±11⁢ (stat.) ±15⁢ (syst.) assuming mixing only between three active flavors. 
+  authors: M. A. Acero et al. (NOvA Collaboration)
+  link:
+    url: https://doi.org/10.1103/PhysRevLett.127.201801
+    display: Phys. Rev. Lett. 127, 201801 – Published 11 November 2021
   highlight: 1
