@@ -4,6 +4,7 @@
   url: https://novaexperiment.fnal.gov
   website: novaexperiment.fnal.gov
   photo: NOvA.png
+  link: nova
 
 
 - name: DUNE
@@ -12,6 +13,7 @@
   url: https://dunescience.org
   website: dunescience.org
   photo: DUNE.png
+  link: dune
 
 - name: EMPHATIC
   fullname: Experiment to Measure the Production of Hadrons At a Testbeam In Chicagoland
@@ -19,3 +21,4 @@
   url: https://emphatic.fnal.gov
   website: emphatic.fnal.gov
   photo: EMPHATIC.png
+  link: emphatic

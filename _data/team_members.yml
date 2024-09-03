@@ -7,6 +7,10 @@
   education2: Ph.D., Lancaster University
   education3: Postdoc Iowa State University
   education4: Postdoc Indiana University
+  experiments:
+    - nova
+    - dune
+    - emphatic
 
 - name: Dr. Jeffrey Kleykamp
   photo: bio-photo.jpg
@@ -14,6 +18,9 @@
   email: jeffrey.kleykamp@gmail.com
   number_educ: 1
   education1: Ph.D., University of Rochester
+  experiments:
+    - nova
+    - dune
 
 - name: Luiz R. Prais
   photo: bio-photo.jpg
@@ -21,27 +28,35 @@
   email: 
   number_educ: 1
   education1: MSc, University of Goias
+  experiments:
+    - nova
 
 - name: Andrew Dye
   photo: bio-photo.jpg
   info: Ph.D. student, started February 2021
   email: 
   number_educ: 1
-  education1: 
+  education1:
+  experiments:
+    - nova
 
 - name: Bishnu Acharya
   photo: bio-photo.jpg
   info: Ph.D. student, started February 2021
   email: 
   number_educ: 1
-  education1: 
+  education1:
+  experiments:
+    - nova
 
 - name: Xiaoyan Huang
   photo: bio-photo.jpg
   info: Ph.D., started November 2022
   email: email
   number_educ: 1
-  education1: 
+  education1:
+  experiments:
+    - dune
 
 - name: Noah Knutson
   photo: bio-photo.jpg
@@ -49,3 +64,5 @@
   email: email
   number_educ: 1
   education1: 
+  experiments:
+    - emphatic

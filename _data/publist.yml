@@ -2,8 +2,26 @@
 - title: "Search for CP-violating Neutrino Non-Standard Interactions with the NOvA Experiment"
   image: nsi-dcp-t23-735x1024.png
   description: This Letter reports a search for charge-parity (CP) symmetry violating non-standard interactions (NSI) of neutrinos with matter using the NOvA Experiment, and examines their effects on the determination of the standard oscillation parameters.
-  authors: NOvA Collaboration
+  authors: M. A. Acero et al. (NOvA Collaboration)
   link:
     url: https://arxiv.org/abs/2403.07266
-    display: arXiv:2403.07266
+    display: arXiv:2403.07266 - Submitted 12 Mar 2024
+  highlight: 1
+
+- title: "Expanding neutrino oscillation parameter measurements in NOvA using a Bayesian approach"
+  image: prd-110-012005-fig7.png
+  description: NOvA is a long-baseline neutrino oscillation experiment that measures oscillations in charged-current 𝜈<sub>𝜇</sub>→𝜈<sub>𝜇</sub> (disappearance) and 𝜈<sub>𝜇</sub>→𝜈<sub>𝑒</sub> (appearance) channels, and their antineutrino counterparts, using neutrinos of energies around 2 GeV over a distance of 810 km. In this work we reanalyze the dataset first examined in our previous paper <a href="http://dx.doi.org/10.1103/PhysRevD.106.032004">Phys. Rev. D 106, 032004 (2022)</a> using an alternative statistical approach based on Bayesian Markov chain Monte Carlo. We measure oscillation parameters consistent with the previous results.
+  authors: M. A. Acero et al. (NOvA Collaboration)
+  link:
+    url: https://doi.org/10.1103/PhysRevD.110.012005
+    display: Phys. Rev. D 110, 012005 – Published 10 July 2024
+  highlight: 1
+
+- title: "Search for Active-Sterile Antineutrino Mixing Using Neutral-Current Interactions with the NOvA Experiment"
+  image: 2021-09-27_07-14-28.png
+  description: This Letter reports results from the first long-baseline search for sterile antineutrinos mixing in an accelerator-based antineutrino-dominated beam. The rate of neutral-current interactions in the two NOvA detectors, at distances of 1 and 810 km from the beam source, is analyzed using an exposure of 12.51×10<sup>20</sup> protons-on-target from the NuMI beam at Fermilab running in antineutrino mode. A total of 121 of neutral-current candidates are observed at the far detector, compared to a prediction of 122 ±11⁢ (stat.) ±15⁢ (syst.) assuming mixing only between three active flavors. 
+  authors: M. A. Acero et al. (NOvA Collaboration)
+  link:
+    url: https://doi.org/10.1103/PhysRevLett.127.201801
+    display: Phys. Rev. Lett. 127, 201801 – Published 11 November 2021
   highlight: 1

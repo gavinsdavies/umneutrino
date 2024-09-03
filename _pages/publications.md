@@ -11,7 +11,7 @@ permalink: /publications/
 
 ## Group highlights
 
-**At the end of this page, you can find the [full list of publications and patents](#full-list-of-publications). All papers are also available on [inspireHEP](https://inspirehep.net/authors/1068224).**
+**At the end of this page, you can find the [full list of publications](#full-list-of-publications). All papers are also available on [inspireHEP](https://inspirehep.net/authors/1068224).**
 
 {% assign number_printed = 0 %}
 {% for publi in site.data.publist %}

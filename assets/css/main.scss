@@ -196,3 +196,19 @@ firstp {
     display: table;
     clear: both;
 }
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+  
+.card-link .card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+}
+  
+.card-link .card:hover {
+    transform: scale(1.11); /* Slightly enlarge the card */
+    box-shadow: 0 4px 8px rgb(206, 26, 26); /* Add shadow to make the card stand out */
+    cursor: pointer; /* Change the cursor to a pointer */
+}
