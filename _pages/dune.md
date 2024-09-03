@@ -13,6 +13,8 @@ permalink: /research/dune/
 
 Work-in-progress, please standby (Sept. 02, 2024)
 
+<p>The DUNE (Deep Underground Neutrino Experiment) is a groundbreaking international scientific project aimed at exploring the fundamental properties of neutrinos, the most abundant yet least understood particles in the universe. Located deep underground at the Sanford Underground Research Facility in South Dakota, DUNE seeks to answer critical questions about the nature of matter and the origins of the universe. By studying neutrino oscillations, the experiment hopes to uncover the differences between neutrinos and antineutrinos, providing insights into why the universe is dominated by matter over antimatter. DUNE also aims to detect neutrinos from supernovae, offering a unique glimpse into the processes that fuel star explosions. This ambitious project involves collaboration from scientists and engineers worldwide and is expected to make significant contributions to our understanding of particle physics and cosmology.</p>
+
 {% assign target_experiment = "dune" %}
 {% assign members = site.data.team_members %}
 {% assign member_names = "" %}
@@ -43,6 +45,6 @@ Work-in-progress, please standby (Sept. 02, 2024)
 <h2>Undergraduate(s)</h2> <h4>{{ smember_names }}</h4>
  {% endif %}
 
-![]({{ site.url }}{{ site.baseurl }}/images/respic/.png){: style="width: 70%; float: center; margin: 0px"}
+![]({{ site.url }}{{ site.baseurl }}/assets/images/respic/DUNE_overview.jpg){: style="width: 70%; float: center; margin: 0px"}
 
 

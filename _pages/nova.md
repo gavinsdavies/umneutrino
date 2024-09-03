@@ -13,7 +13,7 @@ permalink: /research/nova/
 
 Work-in-progress, please standby (Sept. 02, 2024)
 
-
+The NOvA (NuMI Off-Axis Electron Neutrino Appearance) experiment is a prominent particle physics project designed to investigate the mysterious behavior of neutrinos, specifically how they oscillate between different types as they travel. Situated in the United States, NOvA utilizes a powerful particle accelerator at Fermilab to produce a beam of muon neutrinos that travel 500 miles through the Earth to a large detector located in northern Minnesota. By comparing the number and type of neutrinos detected at this distant site with those generated at Fermilab, NOvA aims to uncover fundamental properties of neutrinos, such as the mass ordering and any differences between neutrino and antineutrino behavior. The findings from NOvA could provide crucial insights into the asymmetry between matter and antimatter in the universe, helping to explain why the universe is predominantly composed of matter. NOvA just recently celebrated the milestone of collecting 10 years of neutrino data!
 
 {% assign target_experiment = "nova" %}
 {% assign members = site.data.team_members %}
