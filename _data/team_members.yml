@@ -50,8 +50,8 @@
     - nova
 
 - name: Xiaoyan Huang
-  photo: bio-photo.jpg
-  info: Ph.D., started November 2022
+  photo: Xiaoyan.jpg
+  info: Ph.D. student, started November 2022
   email: email
   number_educ: 1
   education1:
