@@ -1,0 +1,40 @@
+import numpy as np
+import time
+
+def U(x):
+    x1, x2 = x
+    return (1 - x1)**2 + 100 * (x2 - x1**2)**2
+
+def mh_sampler(num_samples=1_000_000, sigma=0.5):
+    samples = np.zeros((num_samples, 2))
+    x = np.array([0.0, 0.0])
+    pi_x = np.exp(-U(x))
+    n_accept = 0
+    # Metropolis Hastings algorithm, propose a sample and then decide whether to accept or not.
+    for i in range(num_samples):
+        x_prop = x + sigma * np.random.randn(2)
+        pi_prop = np.exp(-U(x_prop))
+        alpha = min(1.0, pi_prop / pi_x)
+        if np.random.rand() < alpha:
+            x = x_prop
+            pi_x = pi_prop
+            n_accept += 1
+        samples[i] = x
+
+    return samples, n_accept / num_samples
+
+if __name__ == "__main__":
+    num_samples = 5_000_000
+    sigma = 0.1  # tune for ~20–50% acceptance
+
+    start = time.time()
+    samples, acc_rate = mh_sampler(num_samples, sigma)
+    runtime = time.time() - start
+    # Calculate the mean of x1^2 + x2^2 for each row in the samples array
+    norm2 = np.sum(samples**2, axis=1)
+    est = np.mean(norm2)
+
+    print("=== Metropolis-Hastings ===")
+    print(f"Acceptance rate:      {acc_rate:.3f}")
+    print(f"Estimated E[x₁²+x₂²]: {est:.6f}")
+    print(f"Runtime (s):          {runtime:.6f}")
