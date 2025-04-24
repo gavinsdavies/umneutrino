@@ -1,0 +1,37 @@
+import numpy as np
+import time
+
+# Rosenbrock potential U(x):
+def U(x):
+    x1, x2 = x
+    return (1 - x1)**2 + 100 * (x2 - x1**2)**2
+
+if __name__ == "__main__":
+    # domain for importance sampling
+    x1_min, x1_max = -3.0, 3.0
+    x2_min, x2_max = -3.0, 3.0
+    
+
+    N = 10_000_000  # number of proposals
+    start = time.time()
+
+    # draw uniform proposals
+    xs = np.empty((N, 2)) # 2D array of shape (N, 2)
+    xs[:, 0] = np.random.uniform(x1_min, x1_max, size=N) 
+    xs[:, 1] = np.random.uniform(x2_min, x2_max, size=N)
+
+    # importance weights w ∝ π(x) (unnormalized)
+    logw = -np.apply_along_axis(U, 1, xs)
+    # subtract max for numerical stability
+    logw -= logw.max()
+    w = np.exp(logw)
+
+    norm2 = np.sum(xs**2, axis=1)  # x1^2 + x2^2 for each row
+     
+    est = np.sum(w * norm2) / np.sum(w) # weighted expectation, for E[x1²+x2²]
+
+    runtime = time.time() - start
+    print("=== Ordinary Monte Carlo (importance) ===")
+    print(f"N proposals:          {N}")
+    print(f"Estimated E[x₁²+x₂²]: {est:.6f}")
+    print(f"Runtime (s):          {runtime:.6f}")
