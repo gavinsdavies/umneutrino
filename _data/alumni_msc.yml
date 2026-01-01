@@ -1,0 +1,19 @@
+- name: Ehsan Farooq
+  photo: bio-photo.jpg
+  duration: August 2024 - July 2025, now Biomedical Engineering Ph.D. candidate at University of Mississippi
+  info: Graduated, M.Sc.
+  email: email
+  number_educ: 1
+  education1: M.Sc., University of Mississippi
+  experiments:
+    - dune
+
+- name: Devesh Bhattarai
+  photo: bio-photo.jpg
+  duration: 2019 - 2023, now Ph.D. candidate at Mississippi State University
+  info: Graduated, M.Sc.
+  email: email
+  number_educ: 1
+  education1: M.Sc., University of Mississippi
+  experiments:
+    - nova
