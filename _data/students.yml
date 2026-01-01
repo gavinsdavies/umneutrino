@@ -1,8 +1,11 @@
 - name: Suyog Badal
   photo: bio-photo.jpg
   info: B.Sc. student, started May 2024
-  email: 
+  email:
+  country: 🇳🇵
+  coordinates:
+    - {lat: 28.4, lng: 84.1, name: "Nepal"}
   number_educ: 1
   education1:
   experiments:
-    - nova
+    - NOvA

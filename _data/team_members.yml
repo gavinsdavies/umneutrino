@@ -7,11 +7,11 @@
     - {lat: 54.5, lng: -2.0, name: "United Kingdom"}
     - {lat: 51.1, lng: 10.4, name: "Germany"}
   number_educ: 5
-  education1: MPhys, Lancaster University
-  education2: Ph.D., Lancaster University
-  education3: Postdoc Iowa State University
-  education4: Postdoc Indiana University
-  education5: Assistant Prof., University of Mississippi
+  education1: Assistant Prof., University of Mississippi
+  education2: Postdoc, Indiana University
+  education3: Postdoc, Iowa State University
+  education4: Ph.D., Lancaster University
+  education5: MPhys, Lancaster University
   experiments:
     - NOvA
     - DUNE

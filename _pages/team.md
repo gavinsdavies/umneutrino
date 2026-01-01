@@ -159,10 +159,25 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 <div class="col-sm-6 clearfix">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
-  <i>{{ member.duration }} <br> Role: {{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
+  <i>{{ member.info }}{% if member.graduated %}, {{ member.graduated }}{% endif %}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
   <ul style="overflow: hidden">
-  {% if member.experiments %}
-  <li><strong>Experiments:</strong> {{ member.experiments | join: ', ' }}</li>
+  {% if member.current_position %}
+  <li><strong>Current Position:</strong> {{ member.current_position }}</li>
+  {% endif %}
+  
+  {% if member.number_educ == 1 %}
+  <li> {{ member.education1 }} </li>
+  {% endif %}
+
+  {% if member.number_educ == 2 %}
+  <li> {{ member.education1 }} </li>
+  <li> {{ member.education2 }} </li>
+  {% endif %}
+
+  {% if member.number_educ == 3 %}
+  <li> {{ member.education1 }} </li>
+  <li> {{ member.education2 }} </li>
+  <li> {{ member.education3 }} </li>
   {% endif %}
   </ul>
 </div>
