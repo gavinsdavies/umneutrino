@@ -28,7 +28,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 <div class="col-sm-6 clearfix">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-fluid" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
   <i>{{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %} <!--<br>email: <{{ member.email }}></i> -->
   <ul style="overflow: hidden">
@@ -97,7 +97,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 <div class="col-sm-6 clearfix">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-fluid" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
   <i>{{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %} <!-- <br>email: <{{ member.email }}></i> -->
   <ul style="overflow: hidden">
@@ -157,7 +157,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 <div class="col-sm-6 clearfix">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-fluid" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
   <i>{{ member.info }}{% if member.graduated %}, {{ member.graduated }}{% endif %}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
   <ul style="overflow: hidden">
@@ -207,7 +207,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 <div class="col-sm-6 clearfix">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-fluid" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
   <i>{{ member.info }}{% if member.graduated %}, {{ member.graduated }}{% endif %}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
   <ul style="overflow: hidden">
@@ -256,7 +256,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 <div class="col-sm-6 clearfix">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-fluid" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
   <i>{{ member.info }}{% if member.graduated %}, {{ member.graduated }}{% endif %}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
   <ul style="overflow: hidden">

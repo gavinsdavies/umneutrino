@@ -8,7 +8,7 @@ permalink: /research/emphatic/
 
 <div class="d-flex justify-content-between align-items-center">
 # EMPHATIC
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/EMPHATIC.png"  alt="EMPHATIC experiment logo" class="img-responsive" style="height: 50px; float: right;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/EMPHATIC.png"  alt="EMPHATIC experiment logo" class="img-fluid" style="height: 50px; float: right;">
 </div>
 
 Work-in-progress, please standby (Sept. 02, 2024)

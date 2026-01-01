@@ -8,7 +8,7 @@ permalink: /research/nova/
 
 <div class="d-flex justify-content-between align-items-center">
 # NOvA
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/NOvA.png"  alt="NOvA experiment logo" class="img-responsive" style="height: 50px; float: right;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/NOvA.png"  alt="NOvA experiment logo" class="img-fluid" style="height: 50px; float: right;">
 </div>
 
 Work-in-progress, please standby (Sept. 02, 2024)

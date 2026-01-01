@@ -9,7 +9,7 @@ permalink: /
 **Dr. Gavin S. Davies established the UM Neutrino group in 2019** 
 
 
-<div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover" >
+<div markdown="0" id="carousel" class="carousel slide" data-bs-ride="carousel" data-interval="4000" data-pause="hover" >
     <!-- Menu -->
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
