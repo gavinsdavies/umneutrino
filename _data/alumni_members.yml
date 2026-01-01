@@ -1,7 +1,30 @@
-- name: Devesh Bhattarai
+- name: Dr. Andrew Dye
   photo: bio-photo.jpg
-  duration: In the UM Neutrino group 2019 - 2023, now starting Ph.D. program at Mississippi State University
-  info: M.Sc. student
-  email: email
+  duration: Feb. 2021 - May. 2025, now a Postdoc at Wichita State University
+  info: Ph.D., University of Mississippi
+  graduated: May 2025
+  current_position: Postdoc at Wichita State University
+  country: 🇺🇸
+  coordinates:
+    - {lat: 37.1, lng: -95.7, name: "United States"}
+  email: 
   number_educ: 1
-  education1: 
+  education1: Ph.D., University of Mississippi
+  experiments:
+    - NOvA
+  
+- name: Dr. Luiz R. Prais
+  photo: bio-photo.jpg
+  duration: Jan. 2021 - Dec. 2024, now a Postdoc at University of Cincinnati
+  info: Ph.D., University of Mississippi
+  graduated: December 2024
+  current_position: Postdoc at University of Cincinnati
+  country: 🇧🇷
+  coordinates:
+    - {lat: -14.2, lng: -51.9, name: "Brazil"}
+  email: 
+  number_educ: 2
+  education1: Ph.D., University of Mississippi
+  education2: M.Sc., University of Goias
+  experiments:
+    - NOvA

@@ -1,1 +1,14 @@
-- name: 
+- name: Kaylyn Beard
+  photo: bio-photo.jpg
+  duration: In the UM Neutrino group May 2023 - May 2025, now a Ph.D. candidate at University of Minnesota
+  info: B.Sc., University of Mississippi
+  graduated: May 2025
+  current_position: Ph.D. candidate at University of Minnesota
+  country: 🇺🇸
+  coordinates:
+    - {lat: 42.7, lng: -84.5, name: "United States"}
+  email: 
+  number_educ: 1
+  education1: B.Sc., University of Mississippi
+  experiments:
+    - NOvA

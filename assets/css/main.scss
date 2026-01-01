@@ -108,20 +108,14 @@ firstp {
 }
 
 /* Colour overrides */
-.navbar-default .navbar-brand .navbard-fixed-top {
-	color: #555656 ; /* Lancaster dark gray; */
-	background-color: #555656; /* Lancaster light gray; */
-	border-color: #555656; /* Lancaster dark gray; */
-}
-
-.panel {
+.card {
 	border: 0px;
 }
-.panel-footer {
+.card-footer {
 	background-color: #a56561; /* Lancaster light gray; */
 }
 
-.panel-footer a {
+.card-footer a {
 	color: #000000; /* Lancaster off-white; */
 }
 

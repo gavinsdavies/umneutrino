@@ -6,12 +6,15 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: UM Neutrino
+title: "UM Neutrino Research Group"
 email: gavin.s.davies@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Website of UM Neutrino group.
+  "Neutrino physics research at the University of Mississippi."
 baseurl: ""
 url: ""
+author: "Dr. Gavin S. Davies"
+keywords: "neutrino, physics, NOvA, DUNE, EMPHATIC, particle physics"
+timezone: "America/Chicago"
 
 include:
   - _pages
@@ -19,11 +22,36 @@ include:
 sass:
   sass_dir: _sass
 
+# Collections for better content management
+collections:
+  news:
+    output: true
+    permalink: /news/:title/
+  publications:
+    output: true
+    permalink: /publications/:title/
+  team:
+    output: true
+    permalink: /team/:title/
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-archives
+  - jekyll-redirect-from
+  - jekyll-last-modified-at
+
 # Conversion
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
+# Development settings
+livereload: true
+livereload_port: 35729
 incremental: false
 
 # Markdown Processing

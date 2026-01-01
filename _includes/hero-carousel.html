@@ -1,0 +1,128 @@
+<div class="hero-carousel">
+  <div class="carousel-container">
+    <div class="carousel-slide active">
+      <img src="{{ site.baseurl }}/assets/images/slider/LewisHall.jpg" alt="Lewis Hall">
+      <div class="carousel-content">
+        <h1>UM Neutrino Research Group</h1>
+        <p>Exploring the mysteries of neutrino oscillations</p>
+      </div>
+    </div>
+    <div class="carousel-slide">
+      <img src="{{ site.baseurl }}/assets/images/slider/detector.jpg" alt="Detector">
+      <div class="carousel-content">
+        <h1>Cutting-Edge Experiments</h1>
+        <p>Contributing to NOvA, DUNE, and EMPHATIC</p>
+      </div>
+    </div>
+    <div class="carousel-slide">
+      <img src="{{ site.baseurl }}/assets/images/slider/team.jpg" alt="Team">
+      <div class="carousel-content">
+        <h1>Collaborative Research</h1>
+        <p>Join our dynamic team of physicists</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-btn prev" aria-label="Previous">&lt;</button>
+  <button class="carousel-btn next" aria-label="Next">&gt;</button>
+  <div class="carousel-dots">
+    <span class="dot active" data-slide="0"></span>
+    <span class="dot" data-slide="1"></span>
+    <span class="dot" data-slide="2"></span>
+  </div>
+</div>
+
+<style>
+.hero-carousel {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.3);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.carousel-btn.prev { left: 1rem; }
+.carousel-btn.next { right: 1rem; }
+
+.carousel-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: white;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.dot');
+  let currentSlide = 0;
+
+  function showSlide(n) {
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  document.querySelector('.prev').addEventListener('click', () => showSlide(currentSlide - 1));
+  document.querySelector('.next').addEventListener('click', () => showSlide(currentSlide + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+
+  // Auto advance every 5 seconds
+  setInterval(() => showSlide(currentSlide + 1), 5000);
+});
+</script>

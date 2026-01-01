@@ -1,0 +1,29 @@
+- name: Ehsan Farooq
+  photo: bio-photo.jpg
+  duration: August 2024 - July 2025, now Biomedical Engineering Ph.D. candidate at University of Mississippi
+  info: M.Sc., University of Mississippi
+  graduated: July 2025
+  current_position: Biomedical Engineering Ph.D. candidate at University of Mississippi
+  country: 🇵🇰
+  coordinates:
+    - {lat: 30.4, lng: 69.3, name: "Pakistan"}
+  email: email
+  number_educ: 1
+  education1: M.Sc., University of Mississippi
+  experiments:
+    - DUNE
+
+- name: Devesh Bhattarai
+  photo: bio-photo.jpg
+  duration: January 2020 - July 2023, now Ph.D. candidate at Mississippi State University
+  info: M.Sc., University of Mississippi
+  graduated: July 2023
+  current_position: Ph.D. candidate at Mississippi State University
+  country: 🇳🇵
+  coordinates:
+    - {lat: 28.4, lng: 84.1, name: "Nepal"}
+  email: email
+  number_educ: 1
+  education1: M.Sc., University of Mississippi
+  experiments:
+    - NOvA
