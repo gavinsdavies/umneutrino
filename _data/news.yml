@@ -1,22 +1,52 @@
+- date: 16th July 2025
+  category: milestone
+  title: M.Sc. Graduation
+  description: Congratulations Ehsan Farooq on your graduation with a M.Sc. in Physics!
+
+- date: 29th April 2025
+  category: milestone
+  title: Ph.D. Graduation
+  description: Congratulations Dr. Andrew Dye on your graduation with a Ph.D. in Physics!
+
+- date: 15th November 2024
+  category: milestone
+  title: Ph.D. Graduation
+  description: Congratulations Dr. Luiz R. Prais on your graduation with a Ph.D. in Physics!
+
+- date: 20th September 2024
+  category: milestone
+  title: Ph.D. Prospectus Success
+  description: Congratulations Xiaoyan Huang for successfully defending your Ph.D. Prospectus.
+
+- date: 15th August 2024
+  category: team
+  title: Welcome Ehsan Farooq!
+  description: Ehsan joins as a prospective M.Sc. student.
+
 - date: 1st August 2024
   category: team
   title: Welcome Noah Knutson!
   description: Noah joins as a prospective Ph.D. student.
 
-- date: 17th May 2023
+- date: 17th May 2024
   category: milestone
   title: Ph.D. Prospectus Success
-  description: Congratulations Bishnu for successfully defending your Ph.D. Prospectus.
+  description: Congratulations Bishnu Acharya for successfully defending your Ph.D. Prospectus.
 
 - date: 6th March 2024
   category: milestone
   title: Ph.D. Prospectus Success
-  description: Congratulations Andrew for successfully defending your Ph.D. Prospectus.
+  description: Congratulations Andrew Dye for successfully defending your Ph.D. Prospectus.
 
 - date: 11th December 2023
   category: milestone
   title: Ph.D. Prospectus Success
-  description: Congratulations Luiz for successfully defending your Ph.D. Prospectus.
+  description: Congratulations Luiz R. Prais for successfully defending your Ph.D. Prospectus.
+
+- date: 20th July 2023
+  category: milestone
+  title: M.Sc. Graduation
+  description: Congratulations Devesh Bhattarai on your graduation with a M.Sc. in Physics!
 
 - date: 25th November 2022
   category: team
