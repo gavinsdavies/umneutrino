@@ -28,8 +28,12 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 <div class="col-sm-6 clearfix">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
-  <i>{{ member.info }} <!--<br>email: <{{ member.email }}></i> -->
+  <i>{{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %} <!--<br>email: <{{ member.email }}></i> -->
   <ul style="overflow: hidden">
+
+  {% if member.experiments %}
+  <li><strong>Experiments:</strong> {{ member.experiments | join: ', ' }}</li>
+  {% endif %}
 
   {% if member.number_educ == 1 %}
   <li> {{ member.education1 }} </li>
@@ -93,8 +97,12 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 <div class="col-sm-6 clearfix">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
-  <i>{{ member.info }} <!-- <br>email: <{{ member.email }}></i> -->
+  <i>{{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %} <!-- <br>email: <{{ member.email }}></i> -->
   <ul style="overflow: hidden">
+
+  {% if member.experiments %}
+  <li><strong>Experiments:</strong> {{ member.experiments | join: ', ' }}</li>
+  {% endif %}
 
   {% if member.number_educ == 1 %}
   <li> {{ member.education1 }} </li>
@@ -149,9 +157,11 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 <div class="col-sm-6 clearfix">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" class="img-responsive" width="25%" style="float: left" />
   <h4>{{ member.name }}</h4>
-  <i>{{ member.duration }} <br> Role: {{ member.info }}</i>
+  <i>{{ member.duration }} <br> Role: {{ member.info }}{% if member.country %} <br>{{ member.country }}{% endif %}</i>
   <ul style="overflow: hidden">
-
+  {% if member.experiments %}
+  <li><strong>Experiments:</strong> {{ member.experiments | join: ', ' }}</li>
+  {% endif %}
   </ul>
 </div>
 

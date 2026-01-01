@@ -334,6 +334,133 @@ img {
   object-fit: cover;
 }
 
+/* Team Member Photos - Consistent Sizing */
+.col-sm-6 .img-responsive {
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin: 0 auto 1rem auto !important;
+  display: block !important;
+  float: none !important;
+}
+
+/* Gallery Images - Consistent Sizing */
+.col-sm-3 .img-responsive {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Two-column layout for team member cards */
+.col-sm-6.clearfix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-slow);
+  position: relative;
+  min-height: 300px;
+}
+
+.col-sm-6.clearfix:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Name and title - visible by default */
+.col-sm-6.clearfix h4,
+.col-sm-6.clearfix i {
+  position: relative;
+  z-index: 11;
+  transition: all var(--transition-slow);
+}
+
+.col-sm-6.clearfix h4 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.col-sm-6.clearfix i {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--text-gray);
+}
+
+/* Make flags larger */
+.col-sm-6.clearfix i {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* Move name and title to top on hover */
+.col-sm-6.clearfix:hover h4 {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  color: #ffffff !important;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.col-sm-6.clearfix:hover i {
+  position: absolute;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  color: #ffffff !important;
+  margin: 0;
+}
+
+/* Hide education list by default */
+.col-sm-6.clearfix ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(37, 99, 235, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 2rem 2rem 2rem;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-slow);
+  text-align: left;
+  list-style-position: inside;
+  z-index: 10;
+  border-radius: 1rem;
+  color: #ffffff !important;
+}
+
+/* Show education list on hover over the entire card */
+.col-sm-6.clearfix:hover ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Better styling for education list items */
+.col-sm-6.clearfix ul li {
+  margin-bottom: 0.5rem;
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
 /* Status Indicators */
 .status-dot {
   display: inline-block;
