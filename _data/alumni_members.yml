@@ -1,7 +1,21 @@
-- name: Devesh Bhattarai
+- name: Dr. Luiz R. Prais
   photo: bio-photo.jpg
-  duration: In the UM Neutrino group 2019 - 2023, now starting Ph.D. program at Mississippi State University
-  info: M.Sc. student
-  email: email
+  duration: Jan. 2021 - Dec. 2024, now a Postdoc at University of Cincinnati
+  info: Graduated, Ph.D.
+  email: 
+  number_educ: 2
+  education1: M.Sc., University of Goias
+  education2: Ph.D., University of Mississippi
+  experiments:
+    - nova
+
+- name: Dr. Andrew Dye
+  photo: bio-photo.jpg
+  duration: Feb. 2021 - May. 2025, now a Postdoc at Wichita State University
+  info: Graduated, Ph.D.
+  email: 
   number_educ: 1
-  education1: 
+  education1: Ph.D., University of Mississippi
+  experiments:
+    - nova
+  
