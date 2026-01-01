@@ -1,21 +1,23 @@
 - name: Dr. Luiz R. Prais
   photo: bio-photo.jpg
   duration: Jan. 2021 - Dec. 2024, now a Postdoc at University of Cincinnati
-  info: Graduated, Ph.D.
+  info: Ph.D., University of Mississippi
+  country: 🇧🇷
   email: 
   number_educ: 2
   education1: M.Sc., University of Goias
   education2: Ph.D., University of Mississippi
   experiments:
-    - nova
+    - NOvA
 
 - name: Dr. Andrew Dye
   photo: bio-photo.jpg
   duration: Feb. 2021 - May. 2025, now a Postdoc at Wichita State University
-  info: Graduated, Ph.D.
+  info: Ph.D., University of Mississippi
+  country: 🇺🇸
   email: 
   number_educ: 1
   education1: Ph.D., University of Mississippi
   experiments:
-    - nova
+    - NOvA
   
