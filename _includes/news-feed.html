@@ -1,0 +1,23 @@
+<div class="news-section">
+  <h2>Latest News</h2>
+  
+  <div class="news-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="team">Team</button>
+    <button class="filter-btn" data-filter="milestone">Milestones</button>
+    <button class="filter-btn" data-filter="publication">Publications</button>
+  </div>
+
+  <div class="news-grid">
+    {% for item in site.data.news limit:6 %}
+    <article class="news-card" data-category="{{ item.category }}">
+      <div class="news-date">{{ item.date | date: "%B %d, %Y" }}</div>
+      <span class="badge badge-{{ item.category }}">{{ item.category }}</span>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </article>
+    {% endfor %}
+  </div>
+
+  <a href="/allnews.html" class="btn btn-primary">View All News</a>
+</div>

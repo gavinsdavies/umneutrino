@@ -1,32 +1,66 @@
 - date: 1st August 2024
-  headline: Welcome Noah Knutson! Noah joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Noah Knutson!
+  description: Noah joins as a prospective Ph.D. student.
 
 - date: 17th May 2023
-  headline: Congratulations Bishnu for successfully defending your Ph.D. Prospectus.
+  category: milestone
+  title: Ph.D. Prospectus Success
+  description: Congratulations Bishnu for successfully defending your Ph.D. Prospectus.
 
 - date: 6th March 2024
-  headline: Congratulations Andrew for successfully defending your Ph.D. Prospectus.
+  category: milestone
+  title: Ph.D. Prospectus Success
+  description: Congratulations Andrew for successfully defending your Ph.D. Prospectus.
 
 - date: 11th December 2023
-  headline: Congratulations Luiz for successfully defending your Ph.D. Prospectus.
+  category: milestone
+  title: Ph.D. Prospectus Success
+  description: Congratulations Luiz for successfully defending your Ph.D. Prospectus.
 
 - date: 25th November 2022
-  headline: Welcome Xiaoyan Huang! Xiaoyan joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Xiaoyan Huang!
+  description: Xiaoyan joins as a prospective Ph.D. student.
 
 - date: 25th January 2021
-  headline: Welcome Jeffrey Kleykamp! Jeffrey joins as a Postdoc having graduated with a Ph.D. from University of Rochester.
+  category: team
+  title: Welcome Jeffrey Kleykamp! 
+  description: Jeffrey joins as a Postdoc having graduated with a Ph.D. from University of Rochester.
 
 - date: 15th February 2021
-  headline: Welcome Andrew Dye! Andrew joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Andrew Dye!
+  description: Andrew joins as a prospective Ph.D. student.
 
 - date: 1st February 2021
-  headline: Welcome Bishnu Acharya! Bishnu joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Bishnu Acharya!
+  description: Bishnu joins as a prospective Ph.D. student.
 
 - date: 25th January 2021
-  headline: Welcome Luiz R. Prais! Luiz joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Luiz R. Prais!
+  description: Luiz joins as a prospective Ph.D. student.
 
 - date: 25th January 2021
-  headline: Welcome Devesh Bhattarai! Devesh joins as a prospective Ph.D. student.
+  category: team
+  title: Welcome Devesh Bhattarai!
+  description: Devesh joins as a prospective Ph.D. student.
 
 - date: 21st August 2019
-  headline: PI Davies joins University of Mississippi and UM Neutrino is born!
+  category: milestone
+  title: UM Neutrino Group Established
+  description: PI Davies joins University of Mississippi and UM Neutrino is born!
+
+# Add more news items following this format
+# Available categories: team, milestone, publication, award, event
+
+# Example with more details:
+# - date: 2024-12-15
+#   category: publication
+#   title: New Results from NOvA Published
+#   description: Our latest measurement of neutrino oscillation parameters has been published in Physical Review Letters.
+#   link: /publications/nova-2024
+#   authors: M.A. Acero et al.
+#   journal: Physical Review Letters
