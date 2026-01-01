@@ -3,6 +3,9 @@
   info: Associate Professor; July 2025 - present
   email: gavin.s.davies@gmail.com
   country: 🇬🇧 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁷󠁬󠁳󠁿 🇩🇪
+  coordinates:
+    - {lat: 54.5, lng: -2.0, name: "United Kingdom"}
+    - {lat: 51.1, lng: 10.4, name: "Germany"}
   number_educ: 5
   education1: MPhys, Lancaster University
   education2: Ph.D., Lancaster University
@@ -19,6 +22,9 @@
   info: Postdoc; May 2021 - present
   email: jeffrey.kleykamp@gmail.com
   country: 🇺🇸 🇱🇺
+  coordinates:
+    - {lat: 37.1, lng: -95.7, name: "United States"}
+    - {lat: 49.8, lng: 6.1, name: "Luxembourg"}
   number_educ: 1
   education1: Ph.D., University of Rochester
   experiments:
@@ -30,6 +36,8 @@
   info: Ph.D. student; February 2021 - present
   email: 
   country: 🇳🇵
+  coordinates:
+    - {lat: 28.4, lng: 84.1, name: "Nepal"}
   number_educ: 1
   education1:
   experiments:
@@ -40,6 +48,8 @@
   info: Ph.D. student; November 2022 - present
   email: email
   country: 🇨🇳
+  coordinates:
+    - {lat: 35.9, lng: 104.2, name: "China"}
   number_educ: 1
   education1:
   experiments:
@@ -51,6 +61,8 @@
   info: Ph.D. Student; August 2024 - present
   email: email
   country: 🇺🇸
+  coordinates:
+    - {lat: 42.7, lng: -84.5, name: "United States"}
   number_educ: 1
   education1: 
   experiments:

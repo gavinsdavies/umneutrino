@@ -1,0 +1,151 @@
+<!-- Team Member World Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+/* Map legend styling */
+.map-legend {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+.map-legend h4 {
+    margin: 0 0 10px 0;
+    color: white;
+    font-size: 16px;
+}
+.map-legend i {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 2px solid white;
+}
+</style>
+
+<div id="team-map" style="height: 400px; width: 100%; border-radius: 1rem; margin: 2rem 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);"></div>
+
+<script>
+// Initialize the map
+var map = L.map('team-map').setView([30, 0], 2);
+
+// Add CartoDB Dark Matter tiles
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 18
+}).addTo(map);
+
+// Add markers for team member countries
+var teamLocations = [
+{% for member in site.data.team_members %}
+  {% if member.coordinates %}
+    {% for coord in member.coordinates %}
+      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "staff"},
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% for member in site.data.alumni_members %}
+  {% if member.coordinates %}
+    {% for coord in member.coordinates %}
+      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni"},
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% for member in site.data.alumni_msc %}
+  {% if member.coordinates %}
+    {% for coord in member.coordinates %}
+      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni_msc"},
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% for member in site.data.alumni_bsc %}
+  {% if member.coordinates %}
+    {% for coord in member.coordinates %}
+      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni_bsc"},
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+];
+
+// Create custom icon for staff
+var staffIcon = L.icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+// Track unique countries by type to avoid duplicate markers
+var uniqueCountries = {};
+
+teamLocations.forEach(function(loc) {
+    var key = loc.lat + ',' + loc.lng + ',' + loc.type;
+    if (!uniqueCountries[key]) {
+        uniqueCountries[key] = {
+            names: [loc.name],
+            country: loc.country,
+            type: loc.type,
+            lat: loc.lat,
+            lng: loc.lng
+        };
+    } else {
+        uniqueCountries[key].names.push(loc.name);
+    }
+});
+
+// Add markers with appropriate colors and styles
+Object.keys(uniqueCountries).forEach(function(key) {
+    var data = uniqueCountries[key];
+    var popupContent = '<b>' + data.country + '</b><br>' + data.names.join('<br>');
+    
+    // Staff: Use pin markers
+    if (data.type === 'staff') {
+        L.marker([data.lat, data.lng], {icon: staffIcon})
+            .bindPopup(popupContent)
+            .addTo(map);
+    } 
+    // Alumni: Use circle markers with different colors
+    else {
+        var color;
+        if (data.type === 'alumni') {
+            color = '#2AAD27'; // Green
+        } else if (data.type === 'alumni_msc') {
+            color = '#CB8427'; // Orange
+        } else if (data.type === 'alumni_bsc') {
+            color = '#CAC428'; // Gold
+        }
+        
+        L.circleMarker([data.lat, data.lng], {
+            radius: 10,
+            fillColor: color,
+            color: '#fff',
+            weight: 2,
+            fillOpacity: 0.9
+        })
+        .bindPopup(popupContent)
+        .addTo(map);
+    }
+});
+
+// Add legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'map-legend');
+    div.innerHTML = '<h4>Team Members</h4>' +
+        '<i style="background: #2A81CB; border-radius: 0; width: 10px; height: 15px; position: relative; top: 2px;"></i> Current Staff<br>' +
+        '<i style="background: #2AAD27"></i> Ph.D. Alumni<br>' +
+        '<i style="background: #CB8427"></i> M.Sc. Alumni<br>' +
+        '<i style="background: #CAC428"></i> B.Sc. Alumni';
+    return div;
+};
+
+legend.addTo(map);
+</script>

@@ -15,6 +15,8 @@ custom_title_value: UM Neutrino @ University of Mississippi
 
 Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-students), [alumni](#alumni), [lab visitors](#lab-visitors).
 
+{% include team-map.html %}
+
 ## Staff
 {% assign number_printed = 0 %}
 {% for member in site.data.team_members %}
