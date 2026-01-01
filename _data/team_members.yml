@@ -1,68 +1,57 @@
 - name: Dr. Gavin S. Davies
   photo: Gavin.jpg
-  info: Assistant Professor, started Aug 2019
+  info: Associate Professor; July 2025 - present
   email: gavin.s.davies@gmail.com
-  number_educ: 4
+  country: 🇬🇧 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁷󠁬󠁳󠁿 🇩🇪
+  number_educ: 5
   education1: MPhys, Lancaster University
   education2: Ph.D., Lancaster University
   education3: Postdoc Iowa State University
   education4: Postdoc Indiana University
+  education5: Assistant Prof., University of Mississippi
   experiments:
-    - nova
-    - dune
-    - emphatic
+    - NOvA
+    - DUNE
+    - EMPHATIC
 
 - name: Dr. Jeffrey Kleykamp
   photo: Jeffrey.jpg
-  info: Postdoc, started May 2021
+  info: Postdoc; May 2021 - present
   email: jeffrey.kleykamp@gmail.com
+  country: 🇺🇸 🇱🇺
   number_educ: 1
   education1: Ph.D., University of Rochester
   experiments:
-    - nova
-    - dune
-
-- name: Luiz R. Prais
-  photo: bio-photo.jpg
-  info: Ph.D. student, started January 2021
-  email: 
-  number_educ: 1
-  education1: MSc, University of Goias
-  experiments:
-    - nova
-
-- name: Andrew Dye
-  photo: bio-photo.jpg
-  info: Ph.D. student, started February 2021
-  email: 
-  number_educ: 1
-  education1:
-  experiments:
-    - nova
+    - NOvA
+    - DUNE
 
 - name: Bishnu Acharya
   photo: Bishnu.jpg
-  info: Ph.D. student, started February 2021
+  info: Ph.D. student; February 2021 - present
   email: 
+  country: 🇳🇵
   number_educ: 1
   education1:
   experiments:
-    - nova
+    - NOvA
 
 - name: Xiaoyan Huang
   photo: Xiaoyan.jpg
-  info: Ph.D. student, started November 2022
+  info: Ph.D. student; November 2022 - present
   email: email
+  country: 🇨🇳
   number_educ: 1
   education1:
   experiments:
-    - dune
+    - DUNE
+    - NOvA
 
 - name: Noah Knutson
   photo: bio-photo.jpg
-  info: Ph.D. Student, started August 2024
+  info: Ph.D. Student; August 2024 - present
   email: email
+  country: 🇺🇸
   number_educ: 1
   education1: 
   experiments:
-    - emphatic
+    - EMPHATIC
