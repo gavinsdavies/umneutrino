@@ -132,7 +132,7 @@ This site can be deployed to:
 
 ## Credits
 
-Originally inspired by the [Allan Lab](https://github.com/allanlab/allanlab) website template. This fork has been significantly modified and extended for the UM Neutrino group's specific needs.
+Originally inspired by the [Allan Lab](https://github.com/allanlab/allanlab) website template (MIT licensed). The site has since been substantially rewritten and extended for the UM Neutrino group's specific needs, and no longer shares a GitHub fork relationship with that template.
 
 ## License
 
