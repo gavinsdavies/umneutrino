@@ -1,3 +1,31 @@
+# TODO(Gavin): confirm/adjust exact dates below before publishing -- placeholders
+# use "Summer 2026" or approximate start dates from the CV.
+
+- date: 17th July 2026
+  category: event
+  title: EPIC Summer School wraps up
+  description: The inaugural EPIC (Exploring particle Physics Integrated with Computing) Summer School ran July 13-17, 2026 at Ole Miss, supported by the Mississippi EPSCoR Scientific Hub (MESH). See the <a href="https://olemiss-physics.github.io/epic-summer-2026/">school website</a> and <a href="https://github.com/olemiss-physics/epic-summer-2026">site repository</a>; curriculum notebooks are developed in the <a href="https://github.com/gavinsdavies/MESH">MESH repository</a>.
+
+- date: Summer 2026
+  category: team
+  title: Welcome Samantha Reyes and Chad Byrd!
+  description: Samantha and Chad join as undergraduate researchers working on MicroBooNE/DUNE machine learning.
+
+- date: 2026
+  category: team
+  title: Welcome Dr. Daniel Souza Correia!
+  description: Daniel joins as a Postdoctoral Researcher working on DUNE.
+
+- date: 2026
+  category: publication
+  title: Precision Measurement of Neutrino Oscillation Parameters with 10 Years of Data
+  description: NOvA publishes its ten-year neutrino oscillation parameter measurement in Physical Review Letters 136 (2026).
+
+- date: 2025
+  category: publication
+  title: Joint neutrino oscillation analysis from T2K and NOvA
+  description: The first joint oscillation analysis combining T2K and NOvA data is published in Nature 646, 818 (2025).
+
 - date: 16th July 2025
   category: milestone
   title: M.Sc. Graduation

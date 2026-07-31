@@ -31,6 +31,17 @@
     - NOvA
     - DUNE
 
+- name: Dr. Daniel Souza Correia
+  photo: bio-photo.jpg
+  info: Postdoc; 2026 - present
+  email: email
+  country: 🏳️
+  coordinates: []
+  number_educ: 1
+  education1:
+  experiments:
+    - DUNE
+
 - name: Bishnu Acharya
   photo: Bishnu.jpg
   info: Ph.D. student; February 2021 - present
@@ -64,6 +75,40 @@
   coordinates:
     - {lat: 42.7, lng: -84.5, name: "United States"}
   number_educ: 1
-  education1: 
+  education1:
   experiments:
     - EMPHATIC
+
+- name: Suyog Badal
+  photo: bio-photo.jpg
+  info: Undergraduate researcher; Summer 2025 - present
+  email: email
+  country: 🏳️
+  coordinates: []
+  number_educ: 1
+  education1:
+  experiments:
+    - NOvA
+    - DUNE
+
+- name: Samantha Reyes
+  photo: bio-photo.jpg
+  info: Undergraduate researcher; Summer 2026 - present
+  email: email
+  country: 🏳️
+  coordinates: []
+  number_educ: 1
+  education1:
+  experiments:
+    - DUNE
+
+- name: Chad Byrd
+  photo: bio-photo.jpg
+  info: Undergraduate researcher; Summer 2026 - present
+  email: email
+  country: 🏳️
+  coordinates: []
+  number_educ: 1
+  education1:
+  experiments:
+    - DUNE

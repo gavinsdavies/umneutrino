@@ -1,4 +1,35 @@
 
+# NOTE(Gavin): added to the full list below without a highlight card since there's
+# no dedicated figure image yet in assets/images/pubpic/ -- promote to a highlight
+# card (set highlight: 1, add an image) once a figure is picked.
+
+- title: "Precision Measurement of Neutrino Oscillation Parameters with 10 Years of Data from the NOvA Experiment"
+  image:
+  description: NOvA's ten-year neutrino oscillation parameter measurement, combining the full accumulated exposure to date.
+  authors: M. A. Acero et al. (NOvA Collaboration)
+  link:
+    url: https://arxiv.org/abs/2509.04361
+    display: Phys. Rev. Lett. 136 (2026) - arXiv:2509.04361
+  highlight: 0
+
+- title: "Joint neutrino oscillation analysis from the T2K and NOvA experiments"
+  image:
+  description: The first joint oscillation analysis combining data from the T2K and NOvA long-baseline neutrino experiments.
+  authors: M. A. Acero et al. (NOvA and T2K Collaborations)
+  link:
+    url: https://arxiv.org/abs/2510.19888
+    display: Nature 646, 818 (2025) - arXiv:2510.19888
+  highlight: 0
+
+- title: "Dual-Baseline Search for Active-to-Sterile Neutrino Oscillations in NOvA"
+  image:
+  description: A dual-baseline search for active-to-sterile neutrino oscillations using the NOvA Near and Far Detectors.
+  authors: M. A. Acero et al. (NOvA Collaboration)
+  link:
+    url: https://arxiv.org/abs/2409.04553
+    display: Phys. Rev. Lett. 134, 081804 (2025) - arXiv:2409.04553
+  highlight: 0
+
 - title: "Search for CP-violating Neutrino Non-Standard Interactions with the NOvA Experiment"
   image: nsi-dcp-t23-735x1024.png
   description: This Letter reports a search for charge-parity (CP) symmetry violating non-standard interactions (NSI) of neutrinos with matter using the NOvA Experiment, and examines their effects on the determination of the standard oscillation parameters.
