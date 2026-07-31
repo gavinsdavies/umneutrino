@@ -2,11 +2,121 @@
 layout: default
 ---
 
-  <div id="homeid" class="col-sm-8">
-        <h1>Welcome to UM Neutrino</h1>
+<div id="homeid" class="col-12 um-homepage">
+  <section class="um-hero">
+    <div class="um-hero__content">
+      <p class="um-eyebrow">Ole Miss Physics &amp; Astronomy</p>
+      <h1><span>UM Neutrino</span> <span>Research Group</span></h1>
+      <p class="um-hero__lead">We study neutrino oscillations, detector data, and the measurements behind current and future Fermilab experiments.</p>
+      <div class="um-hero__actions">
+        <a class="btn btn-primary" href="{{ site.baseurl }}/research">Explore research</a>
+        <a class="btn btn-outline-light" href="{{ site.baseurl }}/vacancies">Join the group</a>
+      </div>
+    </div>
+    <div class="um-hero__media" aria-label="UM Neutrino research imagery">
+      <img src="{{ site.baseurl }}/assets/images/slider/LewisHall.jpg" alt="Lewis Hall at the University of Mississippi">
+    </div>
+  </section>
 
-	{{ content }}
-  </div>
-  <div id="newsid" class="col-sm-4" >
-	{% include news.html %}
-  </div>
+  <section class="um-section um-section--intro">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-7">
+        <p class="um-section__kicker">Established in 2019</p>
+        <h2>Neutrino physics from Oxford, Mississippi to Fermilab and beyond</h2>
+        <p>Our group works on neutrino oscillation physics, detector data analysis, and hadron-production measurements that support long-baseline experiments. We are grateful for support from the University of Mississippi and the U.S. Department of Energy.</p>
+      </div>
+      <div class="col-lg-5">
+        <div class="um-callout">
+          <h3>Join, visit, or collaborate</h3>
+          <p>We welcome conversations with prospective graduate students, postdoctoral researchers, undergraduate researchers, and collaborators interested in neutrino physics, software, and analysis.</p>
+          <a href="{{ site.baseurl }}/vacancies">Current opportunities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="um-section">
+    <div class="um-section__header">
+      <p class="um-section__kicker">Research focus</p>
+      <h2>Experiments we help make possible</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a class="um-focus-card" href="{{ site.baseurl }}/research/nova">
+          <img src="{{ site.baseurl }}/assets/images/logopic/NOvA.png" alt="NOvA logo">
+          <h3>NOvA</h3>
+          <p>Precision long-baseline oscillation measurements using Fermilab's NuMI beam and detectors in Illinois and Minnesota.</p>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a class="um-focus-card" href="{{ site.baseurl }}/research/dune">
+          <img src="{{ site.baseurl }}/assets/images/logopic/DUNE.png" alt="DUNE logo">
+          <h3>DUNE</h3>
+          <p>Next-generation measurements of mass ordering, CP violation, supernova neutrinos, and rare processes.</p>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a class="um-focus-card" href="{{ site.baseurl }}/research/emphatic">
+          <img src="{{ site.baseurl }}/assets/images/logopic/EMPHATIC.png" alt="EMPHATIC logo">
+          <h3>EMPHATIC</h3>
+          <p>Hadron-production data that reduce neutrino-beam uncertainties for current and future oscillation experiments.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="um-section um-section--split">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="um-photo-placeholder">
+          <div>
+            <p class="um-section__kicker">Conference photos</p>
+            <h2>Recent and future group moments</h2>
+            <p>Drop real conference photos into <code>assets/images/conferences/</code> later and keep the layout unchanged.</p>
+          </div>
+        </div>
+        <div class="row g-3 mt-1">
+          <div class="col-md-4">
+            <div class="um-conf-card">
+              <span>SESAPS</span>
+              <p>Placeholder for regional meeting photos and student presentations.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="um-conf-card">
+              <span>CHEP</span>
+              <p>Placeholder for computing, software, and analysis conference photos.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="um-conf-card">
+              <span>Future conferences</span>
+              <p>Placeholder for upcoming collaboration meetings and workshops.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="um-news-panel">
+          <div class="um-section__header">
+            <p class="um-section__kicker">Latest news</p>
+            <h2>Group updates</h2>
+          </div>
+          {% for article in site.data.news limit:4 %}
+          <article class="um-news-item" data-category="{{ article.category }}">
+            <time>{{ article.date }}</time>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description }}</p>
+          </article>
+          {% endfor %}
+          <a class="um-news-link" href="{{ site.baseurl }}/allnews.html">See all news</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="um-section um-logo-band" aria-label="Institutional support">
+    <img src="{{ site.baseurl }}/assets/images/logopic/University_of_Mississippi_logo.png" alt="University of Mississippi logo">
+    <img src="{{ site.baseurl }}/assets/images/logopic/DOE_Color_Seal_Green_Logo_Clear_2860×719.png" alt="U.S. Department of Energy logo">
+  </section>
+</div>
