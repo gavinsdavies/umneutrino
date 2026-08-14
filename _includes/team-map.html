@@ -1,175 +1,153 @@
-<!-- Team Member World Map -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Global Reach section: origin stats, flag strip, and Leaflet world map.
+     Styling lives in _sass/enhancements.scss under "Team Page: Global Reach".
+     Leaflet 1.9.4 is pinned with SRI hashes computed from the unpkg assets. -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H"
+      crossorigin="anonymous" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH"
+        crossorigin="anonymous"></script>
 
-<style>
-/* Map legend styling */
-.map-legend {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 14px;
-    line-height: 24px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-}
-.map-legend h4 {
-    margin: 0 0 10px 0;
-    color: white;
-    font-size: 16px;
-}
-.map-legend i {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-    border: 2px solid white;
-}
-</style>
+{%- assign um_everyone = site.data.team_members | concat: site.data.students | concat: site.data.alumni_members | concat: site.data.alumni_msc | concat: site.data.alumni_bsc -%}
+{%- assign um_current_names = site.data.team_members | concat: site.data.students | map: "name" | uniq -%}
+{%- assign um_alumni_names = site.data.alumni_members | concat: site.data.alumni_msc | concat: site.data.alumni_bsc | map: "name" | uniq -%}
+{%- assign um_country_blob = "" -%}
+{%- assign um_flag_blob = "" -%}
+{%- for member in um_everyone -%}
+  {%- for coord in member.coordinates -%}
+    {%- assign um_country_blob = um_country_blob | append: coord.name | append: "|" -%}
+  {%- endfor -%}
+  {%- if member.country -%}
+    {%- assign um_flag_blob = um_flag_blob | append: member.country | append: " " -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign um_countries = um_country_blob | split: "|" | uniq -%}
+{%- assign um_flags = um_flag_blob | split: " " | uniq -%}
 
-<div id="team-map" style="height: 400px; width: 100%; border-radius: 1rem; margin: 2rem 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);"></div>
+<!-- Markup below stays flat (under 4 spaces of indentation) because this
+     include renders inside a markdown page and kramdown would otherwise
+     turn indented HTML lines into literal code blocks. -->
+<section class="um-global-reach" id="global-reach">
+<p class="um-section__kicker">Global reach</p>
+<h2>A Team from Around the World</h2>
+<p class="um-reach-lede">UM Neutrino brings researchers to Oxford, Mississippi from across the globe. The map shows the home countries of our current members and alumni.</p>
+<!-- The stat and footer wrappers are <p> elements (spans only inside) so
+     kramdown does not inject its own <p> tags and break the flex layout. -->
+<div class="um-reach-stats">
+<p class="um-reach-stat"><span class="um-reach-stat__num">{{ um_current_names | size }}</span> <span class="um-reach-stat__label">Current members</span></p>
+<p class="um-reach-stat"><span class="um-reach-stat__num">{{ um_alumni_names | size }}</span> <span class="um-reach-stat__label">Alumni</span></p>
+<p class="um-reach-stat"><span class="um-reach-stat__num">{{ um_countries | size }}</span> <span class="um-reach-stat__label">Countries represented</span></p>
+</div>
+<p class="um-reach-flags" aria-hidden="true">
+{%- for flag in um_flags -%}
+{%- unless flag == "🏳️" or flag == "" -%}<span>{{ flag }}</span>{%- endunless -%}
+{%- endfor -%}
+</p>
+<div class="um-map-card" id="um-map-card">
+<div id="team-map" class="um-map-canvas" role="region" aria-label="World map of team member home countries"></div>
+<p class="um-map-footer"><span class="um-map-key"><span class="um-map-key__dot um-map-key__dot--current"></span>Current members</span> <span class="um-map-key"><span class="um-map-key__dot um-map-key__dot--alumni"></span>Alumni</span> <span class="um-map-footer__note">Numbered markers group members who share a home country.</span></p>
+</div>
+<p class="um-map-empty" id="um-map-empty" hidden>Member home countries will appear here as profiles are updated.</p>
+</section>
 
 <script>
-// Initialize the map
-// scrollWheelZoom: false so scrolling the page past the map on a
-// touchscreen/trackpad doesn't get captured as a map zoom (scroll trap).
-var map = L.map('team-map', { scrollWheelZoom: false }).setView([30, 0], 2);
+(function () {
+  // One entry per member per home location, emitted from the five data files.
+  // Members with an empty coordinates list simply contribute no entries.
+  var teamLocations = [
+    {%- for member in site.data.team_members -%}
+      {%- assign um_role = member.info | split: ";" | first | split: "," | first | strip -%}
+      {%- for coord in member.coordinates %}
+    { lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: {{ member.name | jsonify }}, country: {{ coord.name | jsonify }}, role: {{ um_role | jsonify }}, current: true },
+      {%- endfor -%}
+    {%- endfor -%}
+    {%- for member in site.data.students -%}
+      {%- assign um_role = member.info | split: ";" | first | split: "," | first | strip -%}
+      {%- for coord in member.coordinates %}
+    { lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: {{ member.name | jsonify }}, country: {{ coord.name | jsonify }}, role: {{ um_role | jsonify }}, current: true },
+      {%- endfor -%}
+    {%- endfor -%}
+    {%- for member in site.data.alumni_members -%}
+      {%- for coord in member.coordinates %}
+    { lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: {{ member.name | jsonify }}, country: {{ coord.name | jsonify }}, role: "Ph.D. graduate", current: false },
+      {%- endfor -%}
+    {%- endfor -%}
+    {%- for member in site.data.alumni_msc -%}
+      {%- for coord in member.coordinates %}
+    { lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: {{ member.name | jsonify }}, country: {{ coord.name | jsonify }}, role: "M.Sc. graduate", current: false },
+      {%- endfor -%}
+    {%- endfor -%}
+    {%- for member in site.data.alumni_bsc -%}
+      {%- for coord in member.coordinates %}
+    { lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: {{ member.name | jsonify }}, country: {{ coord.name | jsonify }}, role: "B.Sc. graduate", current: false },
+      {%- endfor -%}
+    {%- endfor %}
+  ];
 
-// Add CartoDB Dark Matter tiles
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  if (!teamLocations.length) {
+    // Empty state: no member has a home location listed yet.
+    document.getElementById('um-map-card').hidden = true;
+    document.getElementById('um-map-empty').hidden = false;
+    return;
+  }
+
+  // scrollWheelZoom stays off so scrolling the page past the map on a
+  // trackpad or touchscreen is not captured as a map zoom (scroll trap,
+  // originally fixed in the A6 review pass).
+  var map = L.map('team-map', {
+    scrollWheelZoom: false,
+    minZoom: 2,
+    maxZoom: 8,
+    worldCopyJump: true,
+    maxBounds: [[-70, -200], [80, 200]],
+    maxBoundsViscosity: 0.8
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 18
-}).addTo(map);
+    subdomains: 'abcd',
+    maxZoom: 8
+  }).addTo(map);
 
-// Add markers for team member countries
-var teamLocations = [
-{% for member in site.data.team_members %}
-  {% if member.coordinates %}
-    {% for coord in member.coordinates %}
-      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "staff"},
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% for member in site.data.students %}
-  {% if member.coordinates %}
-    {% for coord in member.coordinates %}
-      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "students"},
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% for member in site.data.alumni_members %}
-  {% if member.coordinates %}
-    {% for coord in member.coordinates %}
-      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni"},
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% for member in site.data.alumni_msc %}
-  {% if member.coordinates %}
-    {% for coord in member.coordinates %}
-      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni_msc"},
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-{% for member in site.data.alumni_bsc %}
-  {% if member.coordinates %}
-    {% for coord in member.coordinates %}
-      {lat: {{ coord.lat }}, lng: {{ coord.lng }}, name: "{{ member.name }}", country: "{{ coord.name }}", type: "alumni_bsc"},
-    {% endfor %}
-  {% endif %}
-{% endfor %}
-];
-
-// Create custom icon for staff
-var staffIcon = L.icon({
-    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-});
-
-// Track unique countries by type to avoid duplicate markers
-var uniqueCountries = {};
-
-teamLocations.forEach(function(loc) {
-    var key = loc.lat + ',' + loc.lng + ',' + loc.type;
-    if (!uniqueCountries[key]) {
-        uniqueCountries[key] = {
-            names: [loc.name],
-            country: loc.country,
-            type: loc.type,
-            lat: loc.lat,
-            lng: loc.lng
-        };
-    } else {
-        uniqueCountries[key].names.push(loc.name);
+  // Aggregate members by location so shared home countries render as one
+  // numbered marker instead of a stack of overlapping pins.
+  var locations = {};
+  teamLocations.forEach(function (p) {
+    var key = p.lat.toFixed(1) + ',' + p.lng.toFixed(1);
+    if (!locations[key]) {
+      locations[key] = { lat: p.lat, lng: p.lng, country: p.country, members: [], hasCurrent: false };
     }
-});
+    locations[key].members.push(p);
+    if (p.current) locations[key].hasCurrent = true;
+  });
 
-// Add markers with appropriate colors and styles
-Object.keys(uniqueCountries).forEach(function(key) {
-    var data = uniqueCountries[key];
-    var popupContent = '<b>' + data.country + '</b><br>' + data.names.join('<br>');
-    
-    // Staff: Use blue pin markers
-    if (data.type === 'staff') {
-        L.marker([data.lat, data.lng], {icon: staffIcon})
-            .bindPopup(popupContent)
-            .addTo(map);
-    } 
-    // Students: Use purple pin markers
-    else if (data.type === 'students') {
-        var studentIcon = L.icon({
-            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            iconSize: [25, 41],
-            iconAnchor: [12, 41],
-            popupAnchor: [1, -34],
-            shadowSize: [41, 41]
-        });
-        L.marker([data.lat, data.lng], {icon: studentIcon})
-            .bindPopup(popupContent)
-            .addTo(map);
-    }
-    // Alumni: Use circle markers with different colors
-    else {
-        var color;
-        if (data.type === 'alumni') {
-            color = '#2AAD27'; // Green
-        } else if (data.type === 'alumni_msc') {
-            color = '#CB8427'; // Orange
-        } else if (data.type === 'alumni_bsc') {
-            color = '#CAC428'; // Gold
-        }
-        
-        L.circleMarker([data.lat, data.lng], {
-            radius: 10,
-            fillColor: color,
-            color: '#fff',
-            weight: 2,
-            fillOpacity: 0.9
-        })
-        .bindPopup(popupContent)
-        .addTo(map);
-    }
-});
+  var bounds = [];
+  Object.keys(locations).forEach(function (key) {
+    var loc = locations[key];
+    var variant = loc.hasCurrent ? 'current' : 'alumni';
+    var count = loc.members.length;
+    var icon = L.divIcon({
+      className: 'um-map-marker',
+      html: '<span class="um-map-dot um-map-dot--' + variant + '">' + (count > 1 ? count : '') + '</span>',
+      iconSize: [28, 28],
+      iconAnchor: [14, 14],
+      popupAnchor: [0, -16]
+    });
+    var rows = loc.members.map(function (m) {
+      return '<li><span class="um-map-popup__name">' + m.name + '</span>' +
+        (m.role ? '<span class="um-map-popup__role um-map-popup__role--' + (m.current ? 'current' : 'alumni') + '">' + m.role + '</span>' : '') +
+        '</li>';
+    }).join('');
+    L.marker([loc.lat, loc.lng], {
+      icon: icon,
+      title: loc.country + ' (' + count + (count === 1 ? ' member)' : ' members)'),
+      riseOnHover: true
+    })
+      .bindPopup('<div class="um-map-popup"><h5>' + loc.country + '</h5><ul>' + rows + '</ul></div>')
+      .addTo(map);
+    bounds.push([loc.lat, loc.lng]);
+  });
 
-// Add legend
-var legend = L.control({position: 'bottomright'});
-
-legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'map-legend');
-    div.innerHTML = '<h4>Team Members</h4>' +
-        '<i style="background: #2A81CB; border-radius: 0; width: 10px; height: 15px; position: relative; top: 2px;"></i> Current Staff<br>' +
-        '<i style="background: #A23DAD; border-radius: 0; width: 10px; height: 15px; position: relative; top: 2px;"></i> Current Students<br>' +
-        '<i style="background: #2AAD27"></i> Ph.D. Alumni<br>' +
-        '<i style="background: #CB8427"></i> M.Sc. Alumni<br>' +
-        '<i style="background: #CAC428"></i> B.Sc. Alumni';
-    return div;
-};
-
-legend.addTo(map);
+  map.fitBounds(bounds, { padding: [40, 40], maxZoom: 5 });
+})();
 </script>

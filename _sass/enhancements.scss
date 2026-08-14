@@ -627,6 +627,251 @@ img {
   }
 }
 
+/*
+==========================================================================
+  Team Page: Global Reach (stats, flag strip, world map)
+==========================================================================
+Markup lives in _includes/team-map.html. The Leaflet chrome overrides are
+scoped under #team-map so they always beat leaflet.css, which loads after
+this stylesheet.
+*/
+
+.um-global-reach {
+  margin: 2rem 0 3rem;
+}
+
+.um-reach-lede {
+  color: var(--text-gray);
+  font-size: 1.05rem;
+  max-width: 640px;
+}
+
+.um-reach-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.75rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.um-reach-stat {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.um-reach-stat__num {
+  color: var(--primary-blue);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.um-reach-stat__label {
+  color: var(--text-gray);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.um-reach-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.um-map-card {
+  background: #0e1626;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 24px rgba(19, 41, 75, 0.12);
+  margin: 0 0 1rem;
+  overflow: hidden;
+}
+
+.um-map-canvas {
+  background: #0e1626; /* shown while tiles load */
+  height: clamp(300px, 45vh, 460px);
+  width: 100%;
+}
+
+/* main.scss restyles every image on the page (#gridid img adds margins, a
+   10% border radius, and a drop shadow; the global img rules add more
+   margins and rounding). Leaflet map tiles are img elements, so without
+   this reset the basemap renders as a broken grid of rounded, shadowed
+   256px tiles. !important is required to beat #gridid's id specificity. */
+.um-map-canvas img {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.um-map-footer {
+  align-items: center;
+  background: #13294b;
+  color: #cbd5e1;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  gap: 0.4rem 1.4rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+}
+
+.um-map-key {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.45rem;
+}
+
+.um-map-key__dot {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+.um-map-key__dot--current { background: #0d9488; }
+.um-map-key__dot--alumni { background: #b45309; }
+
+.um-map-footer__note {
+  color: #8ea0b8;
+  margin-left: auto;
+}
+
+.um-map-empty {
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* Location markers: one dot per country, numbered when members share it. */
+.um-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.um-map-dot {
+  align-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.um-map-dot--current {
+  background: #0d9488;
+  box-shadow: 0 0 0 5px rgba(13, 148, 136, 0.28), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.um-map-dot--alumni {
+  background: #b45309;
+  box-shadow: 0 0 0 5px rgba(180, 83, 9, 0.28), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Popup card, dark to match the basemap. */
+#team-map .leaflet-popup-content-wrapper {
+  background: #152238;
+  border-radius: 0.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  color: #e6edf5;
+}
+
+#team-map .leaflet-popup-tip { background: #152238; }
+
+#team-map .leaflet-popup-content { margin: 0.85rem 1rem; }
+
+#team-map a.leaflet-popup-close-button { color: #8ea0b8; }
+
+.um-map-popup h5 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+
+.um-map-popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.um-map-popup li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.45rem;
+}
+
+.um-map-popup li:last-child { margin-bottom: 0; }
+
+.um-map-popup__name {
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.um-map-popup__role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.um-map-popup__role--current { color: #5eead4; }
+.um-map-popup__role--alumni { color: #fbbf24; }
+
+/* Zoom control and attribution, dark to match. */
+#team-map .leaflet-bar a {
+  background: #152238;
+  border-bottom-color: #2b3b58;
+  color: #e6edf5;
+}
+
+#team-map .leaflet-bar a:hover,
+#team-map .leaflet-bar a:focus {
+  background: #1e2f4d;
+  color: #ffffff;
+}
+
+#team-map .leaflet-bar a.leaflet-disabled {
+  background: #10192b;
+  color: #4b5c77;
+}
+
+#team-map .leaflet-control-attribution {
+  background: rgba(14, 22, 38, 0.85);
+  color: #8ea0b8;
+}
+
+#team-map .leaflet-control-attribution a { color: #cbd5e1; }
+
+/* The site-wide focus outline is navy, invisible on the dark map. */
+#team-map *:focus {
+  outline-color: #5eead4;
+}
+
+@media (max-width: 576px) {
+  .um-reach-stats {
+    gap: 0.75rem 1.75rem;
+  }
+
+  .um-reach-stat__num {
+    font-size: 1.7rem;
+  }
+
+  .um-reach-flags {
+    font-size: 1.45rem;
+  }
+}
+
 @media (max-width: 576px) {
   .um-hero h1 {
     font-size: 2rem;

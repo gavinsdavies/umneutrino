@@ -12,7 +12,7 @@ custom_title_value: UM Neutrino @ University of Mississippi
  **We are  looking for new PhD students, Postdocs, and Master students to join the team** [(see openings)]({{ site.url }}{{ site.baseurl }}/vacancies) **!**
 
 
-Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-students), [alumni](#alumni), [high school visitors](#high-school-visitors).
+Jump to [global reach](#global-reach), [staff](#staff), [master and bachelor students](#master-and-bachelor-students), [alumni](#alumni), [high school visitors](#high-school-visitors).
 
 {% include team-map.html %}
 
