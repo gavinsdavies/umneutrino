@@ -46,6 +46,8 @@ The EMPHATIC (Experiment to Measure the Production of Hadrons At a Testbeam In C
 {% if smember_names != "" %}
 <h2>Undergraduate(s)</h2> <h4>{{ smember_names }}</h4>
  {% endif %}
-![]({{ site.url }}{{ site.baseurl }}/images/respic/.png){: style="width: 70%; float: center; margin: 0px"}
+<!-- TODO(Gavin): add an EMPHATIC overview image (see dune.md's
+     assets/images/respic/DUNE_overview.jpg for the convention) and restore
+     an ![](...) tag pointing at assets/images/respic/<name>.jpg here. -->
 
 

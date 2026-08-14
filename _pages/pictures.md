@@ -22,9 +22,8 @@ Jump to: [Oxford](#oxford), [EPIC Summer School](#epic-summer-school), [Outreach
 <p> &nbsp; </p>
 
 Our first group photo.
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/.jpg" width="60%" >
-</figure>
+<!-- TODO(Gavin): add the group photo at assets/images/picpic/<name>.jpg and
+     restore a <figure><img ...></figure> tag pointing at it here. -->
 
 
 ## EPIC Summer School
@@ -43,6 +42,5 @@ School, July 13-17 2026. Photos to be added once available -- see the
 
 ## Outreach
 Work in progress
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/images/picpic/.jpg" width="60%">
-</figure>
+<!-- TODO(Gavin): add an outreach photo at assets/images/picpic/<name>.jpg and
+     restore a <figure><img ...></figure> tag pointing at it here. -->

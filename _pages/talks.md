@@ -10,6 +10,7 @@ permalink: /talks/
 
 Updating soon -- standby (Aug 20 2024)
 
-![]({{ site.url }}{{ site.baseurl }}/assets/images/talkpic.png){: style="width: 70%; float: center; margin: 0px"}
+<!-- TODO(Gavin): add a talks/conference image at assets/images/talkpic.png
+     and restore an ![](...) tag pointing at it here. -->
 
 

@@ -10,6 +10,8 @@ permalink: /research/
 
 Work-in-progress, please standby (Sept. 02, 2024)
 TMS Kalman Filter, TMS GitHub CI, TMS chargeID
-![]({{ site.url }}{{ site.baseurl }}/images/respic/.png){: style="width: 70%; float: center; margin: 0px"}
+<!-- TODO(Gavin): add a research overview image (see dune.md's
+     assets/images/respic/DUNE_overview.jpg for the convention) and restore
+     an ![](...) tag pointing at assets/images/respic/<name>.jpg here. -->
 
 

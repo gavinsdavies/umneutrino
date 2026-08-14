@@ -145,6 +145,7 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 {% endif %}
 
 
+<a id="alumni"></a>
 ## Alumni - Ph.D.
 
 {% assign number_printed = 0 %}

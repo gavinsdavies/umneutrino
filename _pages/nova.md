@@ -65,6 +65,8 @@ The NOvA (NuMI Off-Axis Electron Neutrino Appearance) experiment is a prominent 
 {% endfor %}
 -->
 
-![]({{ site.url }}{{ site.baseurl }}/images/respic/.png){: style="width: 70%; float: center; margin: 0px"}
+<!-- TODO(Gavin): add a NOvA overview image (see dune.md's
+     assets/images/respic/DUNE_overview.jpg for the convention) and restore
+     an ![](...) tag pointing at assets/images/respic/<name>.jpg here. -->
 
 
