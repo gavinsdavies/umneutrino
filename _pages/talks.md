@@ -2,7 +2,6 @@
 title: "UM Neutrino - Talks"
 layout: talks
 excerpt: "UM Neutrino -- Talks"
-sitemap: false
 permalink: /talks/
 ---
 

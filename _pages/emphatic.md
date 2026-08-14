@@ -2,7 +2,6 @@
 title: "UM Neutrino - EMPHATIC Research"
 layout: experiment
 excerpt: "UM Neutrino -- EMPHATIC Research"
-sitemap: true
 permalink: /research/emphatic/
 ---
 

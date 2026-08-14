@@ -1,8 +1,7 @@
 ---
-title: "UM Neutrino- Publications"
+title: "UM Neutrino - Publications"
 layout: gridlay
-excerpt: "UM Neutrino-- Publications."
-sitemap: false
+excerpt: "UM Neutrino -- Publications."
 permalink: /publications/
 ---
 

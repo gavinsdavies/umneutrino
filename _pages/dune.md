@@ -2,7 +2,6 @@
 title: "UM Neutrino - DUNE Research"
 layout: experiment
 excerpt: "UM Neutrino -- DUNE Research"
-sitemap: false
 permalink: /research/dune/
 ---
 

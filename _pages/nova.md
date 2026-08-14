@@ -2,7 +2,6 @@
 title: "UM Neutrino - NOvA Research"
 layout: experiment
 excerpt: "UM Neutrino -- NOvA Research"
-sitemap: false
 permalink: /research/nova/
 ---
 

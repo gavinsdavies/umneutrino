@@ -2,7 +2,6 @@
 title: "UM Neutrino - Outreach"
 layout: textlay
 excerpt: "UM Neutrino -- Outreach"
-sitemap: false
 permalink: /outreach/
 ---
 

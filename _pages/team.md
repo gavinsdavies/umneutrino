@@ -2,7 +2,6 @@
 title: "UM Neutrino - Team"
 layout: gridlay
 excerpt: "UM Neutrino: Team members"
-sitemap: false
 permalink: /team/
 custom_title_enabled: true 
 custom_title_value: UM Neutrino @ University of Mississippi
