@@ -47,8 +47,9 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 # Development settings
-livereload: true
-livereload_port: 35729
+# NOTE(review, Aug 2026): livereload/livereload_port used to be set here, but
+# those are CLI-only flags (`bundle exec jekyll serve --livereload`), not
+# recognized _config.yml keys -- they were silently inert. Removed.
 incremental: false
 
 # Markdown Processing
