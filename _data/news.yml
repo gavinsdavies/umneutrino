@@ -111,14 +111,7 @@
   title: UM Neutrino Group Established
   description: PI Davies joins University of Mississippi and UM Neutrino is born!
 
-# Add more news items following this format
+# Add more news items following this format above.
 # Available categories: team, milestone, publication, award, event
-
-# Example with more details:
-# - date: 2024-12-15
-#   category: publication
-#   title: New Results from NOvA Published
-#   description: Our latest measurement of neutrino oscillation parameters has been published in Physical Review Letters.
-#   link: /publications/nova-2024
-#   authors: M.A. Acero et al.
-#   journal: Physical Review Letters
+# Optional fields: link, authors, journal (see _includes/news.html /
+# news-feed.html / _pages/allnews.md for how each field is rendered).

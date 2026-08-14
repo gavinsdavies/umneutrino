@@ -11,7 +11,7 @@ permalink: /research/emphatic/
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/EMPHATIC.png"  alt="EMPHATIC experiment logo" class="img-fluid" style="height: 50px; float: right;">
 </div>
 
-Work-in-progress, please standby (Sept. 02, 2024)
+Page under construction -- more detail coming soon.
 
 The EMPHATIC (Experiment to Measure the Production of Hadrons At a Testbeam In Chicagoland) experiment is a cutting-edge research project focused on improving our understanding of hadron production, which is critical for various areas of particle physics, including neutrino experiments. Located at Fermilab, EMPHATIC aims to precisely measure the production rates and characteristics of hadrons—particles made of quarks, such as protons and neutrons—when protons collide with various target materials. These measurements are essential for refining the models used in neutrino experiments, where accurate predictions of particle interactions are crucial for interpreting the data. By providing high-precision data on hadron production, EMPHATIC contributes to reducing uncertainties in neutrino flux predictions and enhances the accuracy of experiments like DUNE and NOvA. This experiment plays a vital role in advancing our knowledge of particle interactions and improving the overall precision of particle physics research.
 

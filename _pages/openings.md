@@ -8,7 +8,7 @@ permalink: /vacancies
 
 # Open positions
 
-**We are not actively recruiting at this time**
+**We are not actively recruiting for any posted positions at this time, but inquiries from prospective students and postdocs are always welcome.**
 
 <!--We are  looking for new group members with passion, talent, and grit!
 

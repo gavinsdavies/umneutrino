@@ -12,7 +12,7 @@ permalink: /aboutwebsite.html
 
 This website is built with:
 
-- **[Jekyll](https://jekyllrb.com)** 4.3 - A static site generator that transforms markdown and data files into HTML
+- **[Jekyll](https://jekyllrb.com)** 4 - A static site generator that transforms markdown and data files into HTML
 - **[Bootstrap](https://getbootstrap.com)** 5.3.3 - Modern CSS framework for responsive design
 - **[Bootswatch](https://bootswatch.com)** (Darkly theme) - Styled Bootstrap theme
 - **[Bootstrap Icons](https://icons.getbootstrap.com)** - Comprehensive icon library

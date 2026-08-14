@@ -17,7 +17,7 @@
 
 - name: EMPHATIC
   fullname: Experiment to Measure the Production of Hadrons At a Testbeam In Chicagoland
-  blurb: ...is a testbeam experiment at Fermilab that studies the production of hadrons in neutrino interactions.
+  blurb: ...is a testbeam experiment at Fermilab that studies hadron production from particle beams on target, informing neutrino flux predictions.
   url: https://emphatic.fnal.gov
   website: emphatic.fnal.gov
   photo: EMPHATIC.png
