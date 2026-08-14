@@ -197,6 +197,17 @@ a:hover {
   transition: all var(--transition-base);
 }
 
+/* The real navbar in header.html is fixed-top with an 8-item expanded
+   hamburger menu on narrow screens. Since the whole <nav> is
+   position: fixed, the expanded .navbar-collapse panel can grow taller
+   than the viewport with nothing to cap it, pushing the last nav items
+   (and the underlying page content, once the panel closes) out of reach.
+   Cap it and let it scroll internally instead. */
+.navbar-collapse {
+  max-height: calc(100vh - 4.5rem);
+  overflow-y: auto;
+}
+
 .navbar-modern.scrolled {
   box-shadow: var(--shadow-md);
 }

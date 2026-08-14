@@ -32,7 +32,9 @@
 
 <script>
 // Initialize the map
-var map = L.map('team-map').setView([30, 0], 2);
+// scrollWheelZoom: false so scrolling the page past the map on a
+// touchscreen/trackpad doesn't get captured as a map zoom (scroll trap).
+var map = L.map('team-map', { scrollWheelZoom: false }).setView([30, 0], 2);
 
 // Add CartoDB Dark Matter tiles
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
