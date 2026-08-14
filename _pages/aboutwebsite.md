@@ -28,16 +28,15 @@ For detailed build instructions, deployment guides, and contribution guidelines,
 
 ## Credits
 
-This website was originally inspired by the excellent [Allan Lab](https://github.com/allanlab/allanlab) template created by the Allan Lab at Leiden University. Since then, it has been significantly modified and extended to meet the specific needs of the UM Neutrino research group, including:
+This site started from the [Allan Lab](https://github.com/allanlab/allanlab) template (Leiden University) and has since diverged quite a bit, including:
 
 - Migration to Bootstrap 5
 - Custom research experiment pages
 - Interactive team map
-- Enhanced news filtering
-- Custom carousel components
-- Darkly theme integration
+- Filterable news list
+- Bootswatch Darkly theme import
 
-We're grateful to the Allan Lab for open-sourcing their original template.
+Thanks to the Allan Lab for open-sourcing the original template.
 
 ## License
 
