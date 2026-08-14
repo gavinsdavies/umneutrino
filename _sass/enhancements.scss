@@ -135,66 +135,14 @@ a:hover {
   box-shadow: var(--shadow-xl);
 }
 
-.card-header {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
-}
-
 .card-body {
   color: var(--text-gray);
-}
-
-/* Gradient Backgrounds */
-.gradient-blue {
-  background: linear-gradient(135deg, #13294b 0%, #0f766e 100%);
-}
-
-.gradient-purple {
-  background: linear-gradient(135deg, #13294b 0%, #9f1d35 100%);
-}
-
-.gradient-green {
-  background: linear-gradient(135deg, #0f766e 0%, #2f855a 100%);
-}
-
-/* Container Improvements */
-.container-modern {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 /* Section Spacing */
 .section {
   padding-top: 4rem;
   padding-bottom: 4rem;
-}
-
-.section-lg {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
-/* Grid Layouts */
-.grid-auto {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-/* Navbar Improvements */
-.navbar-modern {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all var(--transition-base);
 }
 
 /* The real navbar in header.html is fixed-top with an 8-item expanded
@@ -208,8 +156,14 @@ a:hover {
   overflow-y: auto;
 }
 
-.navbar-modern.scrolled {
-  box-shadow: var(--shadow-md);
+/* Research dropdown hover behavior (moved out of an inline <style> block
+   in header.html during the A7 review pass). */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  margin-top: 0; /* Adjust if needed to align with the parent */
 }
 
 /* Badge Styles */
@@ -223,60 +177,6 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 9999px;
-}
-
-.badge-primary {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--primary-blue);
-}
-
-.badge-success {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--accent-green);
-}
-
-/* Loading States */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s ease-in-out infinite;
-  border-radius: 0.5rem;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-slide-in {
-  animation: slide-in-right 0.5s ease-out;
 }
 
 /* Focus States for Accessibility */
@@ -306,10 +206,6 @@ img {
 
 /* Print Styles */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-  
   body {
     background: white;
     color: black;
@@ -318,30 +214,7 @@ img {
 
 /* Utility Classes */
 .text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-left { text-align: left; }
-.mt-4 { margin-top: 1rem; }
 .mb-4 { margin-bottom: 1rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-.px-4 { padding-left: 1rem; padding-right: 1rem; }
-.rounded { border-radius: 0.5rem; }
-.shadow { box-shadow: var(--shadow-md); }
-
-/* Hover Effects */
-.hover-lift {
-  transition: transform var(--transition-base);
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* Glass Morphism Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
 
 /* Responsive Images */
 /* .img-responsive is a Bootstrap 3 class kept here for any old content; the
@@ -488,19 +361,6 @@ img {
   font-size: 0.95rem;
   font-weight: 500;
 }
-
-/* Status Indicators */
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-
-.status-active { background: var(--accent-green); }
-.status-pending { background: #f59e0b; }
-.status-inactive { background: var(--text-light); }
 
 /*
 ==========================================================================
