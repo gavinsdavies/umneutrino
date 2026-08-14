@@ -7,7 +7,7 @@
   country: 🇵🇰
   coordinates:
     - {lat: 30.4, lng: 69.3, name: "Pakistan"}
-  email: email
+  email:
   number_educ: 1
   education1: M.Sc., University of Mississippi
   experiments:
@@ -22,7 +22,7 @@
   country: 🇳🇵
   coordinates:
     - {lat: 28.4, lng: 84.1, name: "Nepal"}
-  email: email
+  email:
   number_educ: 1
   education1: M.Sc., University of Mississippi
   experiments:

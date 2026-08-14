@@ -25,17 +25,21 @@
   --transition-slow: 300ms ease;
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-dark: #f9fafb;
-    --text-gray: #d1d5db;
-    --text-light: #9ca3af;
-    --bg-light: #111827;
-    --bg-white: #1f2937;
-    --border-color: #374151;
-  }
-}
+/* NOTE(review, Aug 2026): a prefers-color-scheme: dark block used to live
+   here, redefining --text-dark/--bg-white/etc. to dark values. The rest of
+   the site (body background, h1-h6 colors, .card p, card-footer, etc. in
+   main.scss) uses fixed hex literals that do NOT respond to that media
+   query, so on a machine with OS dark mode enabled, only the components
+   styled through these CSS custom properties (.card, .badge, the team-card
+   hover overlay) would flip dark while everything else stayed on the fixed
+   light palette -- e.g. .card p text (#3f4b5b, from main.scss) would land
+   on a dark #1f2937 card background at roughly 1.6:1 contrast, well below
+   WCAG AA. Removed rather than partially patched, since the site is
+   light-themed by default (not dark, despite Bootswatch Darkly being
+   imported -- main.scss's "Colour overrides" section forces it light) and
+   doesn't have a complete, deliberate dark-mode implementation to hand off
+   to. Re-add only alongside a full dark-mode pass that also covers the
+   fixed-hex-color elements. */
 
 /* Modern Typography */
 body {
@@ -131,37 +135,8 @@ a:hover {
   box-shadow: var(--shadow-xl);
 }
 
-.card-header {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text-dark);
-}
-
 .card-body {
   color: var(--text-gray);
-}
-
-/* Gradient Backgrounds */
-.gradient-blue {
-  background: linear-gradient(135deg, #13294b 0%, #0f766e 100%);
-}
-
-.gradient-purple {
-  background: linear-gradient(135deg, #13294b 0%, #9f1d35 100%);
-}
-
-.gradient-green {
-  background: linear-gradient(135deg, #0f766e 0%, #2f855a 100%);
-}
-
-/* Container Improvements */
-.container-modern {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 /* Section Spacing */
@@ -170,34 +145,31 @@ a:hover {
   padding-bottom: 4rem;
 }
 
-.section-lg {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+/* The real navbar in header.html is fixed-top with an 8-item expanded
+   hamburger menu on narrow screens. Since the whole <nav> is
+   position: fixed, the expanded .navbar-collapse panel can grow taller
+   than the viewport with nothing to cap it, pushing the last nav items
+   (and the underlying page content, once the panel closes) out of reach.
+   Cap it and let it scroll internally instead. */
+.navbar-collapse {
+  max-height: calc(100vh - 4.5rem);
+  overflow-y: auto;
 }
 
-/* Grid Layouts */
-.grid-auto {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+/* Research dropdown hover behavior (moved out of an inline <style> block
+   in header.html during the A7 review pass). */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
-/* Navbar Improvements */
-.navbar-modern {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  transition: all var(--transition-base);
-}
-
-.navbar-modern.scrolled {
-  box-shadow: var(--shadow-md);
+.dropdown-menu {
+  margin-top: 0; /* Adjust if needed to align with the parent */
 }
 
 /* Badge Styles */
+/* Layout only here; background/color are left to Bootstrap's .bg-* / .text-*
+   utilities (e.g. .badge.bg-primary) so category-colored news badges are not
+   overridden back to a flat grey. */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -205,62 +177,6 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 9999px;
-  background: var(--bg-light);
-  color: var(--text-gray);
-}
-
-.badge-primary {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--primary-blue);
-}
-
-.badge-success {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--accent-green);
-}
-
-/* Loading States */
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s ease-in-out infinite;
-  border-radius: 0.5rem;
-}
-
-@keyframes loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-slide-in {
-  animation: slide-in-right 0.5s ease-out;
 }
 
 /* Focus States for Accessibility */
@@ -290,10 +206,6 @@ img {
 
 /* Print Styles */
 @media print {
-  .no-print {
-    display: none !important;
-  }
-  
   body {
     background: white;
     color: black;
@@ -302,51 +214,21 @@ img {
 
 /* Utility Classes */
 .text-center { text-align: center; }
-.text-right { text-align: right; }
-.text-left { text-align: left; }
-.mt-4 { margin-top: 1rem; }
 .mb-4 { margin-bottom: 1rem; }
-.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
-.px-4 { padding-left: 1rem; padding-right: 1rem; }
-.rounded { border-radius: 0.5rem; }
-.shadow { box-shadow: var(--shadow-md); }
-
-/* Hover Effects */
-.hover-lift {
-  transition: transform var(--transition-base);
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* Glass Morphism Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
 
 /* Responsive Images */
-.img-responsive {
+/* .img-responsive is a Bootstrap 3 class kept here for any old content; the
+   site now uses Bootstrap 5's .img-fluid (see team.md), so both are targeted. */
+.img-responsive,
+.img-fluid {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-/* Team Member Photos - Consistent Sizing */
-.col-sm-6 .img-responsive {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  margin: 0 auto 1rem auto !important;
-  display: block !important;
-  float: none !important;
-}
-
 /* Gallery Images - Consistent Sizing */
-.col-sm-3 .img-responsive {
+.col-sm-3 .img-responsive,
+.col-sm-3 .img-fluid {
   width: 100% !important;
   height: 200px !important;
   object-fit: cover;
@@ -354,125 +236,168 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Two-column layout for team member cards */
-.col-sm-6.clearfix {
-  display: flex;
-  flex-direction: column;
+/*
+==========================================================================
+  Team Page: Member Card Grid
+==========================================================================
+Markup lives in _includes/team-section.html; it replaced the old
+.col-sm-6.clearfix card markup in team.md (team.md was the only user of
+those classes, so their rules were removed in the same commit). The
+hover/keyboard-focus education overlay preserves the accessibility
+behaviour added in the A5 review pass: the card carries tabindex="0" so
+:focus-within reveals the overlay for keyboard and touch users too.
+*/
+
+.um-team-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  margin: 1rem 0 2.5rem;
+}
+
+.um-team-card {
   align-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
   background: var(--bg-white);
-  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
   box-shadow: var(--shadow-md);
-  transition: all var(--transition-slow);
-  position: relative;
-  min-height: 300px;
-}
-
-.col-sm-6.clearfix:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Name and title - visible by default */
-.col-sm-6.clearfix h4,
-.col-sm-6.clearfix i {
-  position: relative;
-  z-index: 11;
-  transition: all var(--transition-slow);
-}
-
-.col-sm-6.clearfix h4 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.col-sm-6.clearfix i {
-  display: block;
-  margin-bottom: 0.75rem;
-  color: var(--text-gray);
-}
-
-/* Make flags larger */
-.col-sm-6.clearfix i {
-  font-size: 1.5rem;
-  line-height: 1.2;
-}
-
-/* Move name and title to top on hover */
-.col-sm-6.clearfix:hover h4 {
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  color: #ffffff !important;
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.col-sm-6.clearfix:hover i {
-  position: absolute;
-  top: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  color: #ffffff !important;
-  margin: 0;
-}
-
-/* Hide education list by default */
-.col-sm-6.clearfix ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(37, 99, 235, 0.95);
-  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  padding: 1.5rem 1.25rem 1.25rem;
+  position: relative;
+  text-align: center;
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.um-team-card:hover,
+.um-team-card:focus-within {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* kramdown wraps stray inline content (e.g. the photo) in bare <p> tags
+   when the include renders inside markdown; keep those tight. */
+.um-team-card p:not([class]) {
+  margin: 0;
+}
+
+/* main.scss's #gridid img rule adds its own margins, rounding, and shadow
+   to every image on the page; size and shape the portrait here instead.
+   !important is required to beat that rule's id specificity. */
+.um-team-card__photo {
+  border-radius: 0.6rem !important;
+  box-shadow: none !important;
+  display: block;
+  height: 180px !important;
+  margin: 0 0 1rem !important;
+  object-fit: cover;
+  width: 180px !important;
+}
+
+.um-team-card__name {
+  color: var(--primary-blue);
+  font-size: 1.12rem;
+  margin: 0 0 0.25rem;
+}
+
+.um-team-card__info {
+  color: var(--text-gray);
+  font-size: 0.88rem;
+  margin: 0 0 0.4rem;
+}
+
+.um-team-card__now {
+  color: var(--secondary-cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.um-team-card__flags {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.um-team-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   justify-content: center;
-  align-items: flex-start;
-  padding: 6rem 2rem 2rem 2rem;
+  margin: auto 0 0; /* pins the chips to the card bottom for even rows */
+  padding-top: 0.35rem;
+}
+
+.um-team-chip {
+  background: rgba(19, 41, 75, 0.06);
+  border: 1px solid rgba(19, 41, 75, 0.18);
+  border-radius: 9999px;
+  color: var(--primary-blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.6rem;
+  text-transform: uppercase;
+}
+
+/* Education overlay, hidden until hover or keyboard focus. */
+.um-team-card__overlay {
+  backdrop-filter: blur(6px);
+  background: rgba(19, 41, 75, 0.96);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: center;
   margin: 0;
   opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-slow);
+  overflow-y: auto;
+  padding: 1.5rem;
+  position: absolute;
   text-align: left;
-  list-style-position: inside;
-  z-index: 10;
-  border-radius: 1rem;
-  color: #ffffff !important;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  visibility: hidden;
+  z-index: 5;
 }
 
-/* Show education list on hover over the entire card */
-.col-sm-6.clearfix:hover ul {
+.um-team-card:hover .um-team-card__overlay,
+.um-team-card:focus-within .um-team-card__overlay {
   opacity: 1;
   visibility: visible;
 }
 
-/* Better styling for education list items */
-.col-sm-6.clearfix ul li {
-  margin-bottom: 0.5rem;
-  color: #ffffff !important;
-  font-size: 0.95rem;
+.um-team-card__overlay-name {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin: 0 0 0.15rem;
+}
+
+.um-team-card__overlay-kicker {
+  color: #5eead4;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.um-team-card__edu {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.um-team-card__edu li {
+  color: #ffffff;
   font-weight: 500;
+  margin-bottom: 0.45rem;
 }
 
-/* Status Indicators */
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
+.um-team-card__edu li:last-child {
+  margin-bottom: 0;
 }
-
-.status-active { background: var(--accent-green); }
-.status-pending { background: #f59e0b; }
-.status-inactive { background: var(--text-light); }
 
 /*
 ==========================================================================
@@ -736,6 +661,251 @@ img {
 
   .um-section {
     padding: 3rem 1.5rem;
+  }
+}
+
+/*
+==========================================================================
+  Team Page: Global Reach (stats, flag strip, world map)
+==========================================================================
+Markup lives in _includes/team-map.html. The Leaflet chrome overrides are
+scoped under #team-map so they always beat leaflet.css, which loads after
+this stylesheet.
+*/
+
+.um-global-reach {
+  margin: 2rem 0 3rem;
+}
+
+.um-reach-lede {
+  color: var(--text-gray);
+  font-size: 1.05rem;
+  max-width: 640px;
+}
+
+.um-reach-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.75rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.um-reach-stat {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.um-reach-stat__num {
+  color: var(--primary-blue);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.um-reach-stat__label {
+  color: var(--text-gray);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.um-reach-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.um-map-card {
+  background: #0e1626;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 24px rgba(19, 41, 75, 0.12);
+  margin: 0 0 1rem;
+  overflow: hidden;
+}
+
+.um-map-canvas {
+  background: #0e1626; /* shown while tiles load */
+  height: clamp(300px, 45vh, 460px);
+  width: 100%;
+}
+
+/* main.scss restyles every image on the page (#gridid img adds margins, a
+   10% border radius, and a drop shadow; the global img rules add more
+   margins and rounding). Leaflet map tiles are img elements, so without
+   this reset the basemap renders as a broken grid of rounded, shadowed
+   256px tiles. !important is required to beat #gridid's id specificity. */
+.um-map-canvas img {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+.um-map-footer {
+  align-items: center;
+  background: #13294b;
+  color: #cbd5e1;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  gap: 0.4rem 1.4rem;
+  margin: 0;
+  padding: 0.6rem 1rem;
+}
+
+.um-map-key {
+  align-items: center;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.45rem;
+}
+
+.um-map-key__dot {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+}
+
+.um-map-key__dot--current { background: #0d9488; }
+.um-map-key__dot--alumni { background: #b45309; }
+
+.um-map-footer__note {
+  color: #8ea0b8;
+  margin-left: auto;
+}
+
+.um-map-empty {
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* Location markers: one dot per country, numbered when members share it. */
+.um-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.um-map-dot {
+  align-items: center;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 28px;
+  justify-content: center;
+  width: 28px;
+}
+
+.um-map-dot--current {
+  background: #0d9488;
+  box-shadow: 0 0 0 5px rgba(13, 148, 136, 0.28), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.um-map-dot--alumni {
+  background: #b45309;
+  box-shadow: 0 0 0 5px rgba(180, 83, 9, 0.28), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Popup card, dark to match the basemap. */
+#team-map .leaflet-popup-content-wrapper {
+  background: #152238;
+  border-radius: 0.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  color: #e6edf5;
+}
+
+#team-map .leaflet-popup-tip { background: #152238; }
+
+#team-map .leaflet-popup-content { margin: 0.85rem 1rem; }
+
+#team-map a.leaflet-popup-close-button { color: #8ea0b8; }
+
+.um-map-popup h5 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin: 0 0 0.5rem;
+}
+
+.um-map-popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.um-map-popup li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.45rem;
+}
+
+.um-map-popup li:last-child { margin-bottom: 0; }
+
+.um-map-popup__name {
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.um-map-popup__role {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.um-map-popup__role--current { color: #5eead4; }
+.um-map-popup__role--alumni { color: #fbbf24; }
+
+/* Zoom control and attribution, dark to match. */
+#team-map .leaflet-bar a {
+  background: #152238;
+  border-bottom-color: #2b3b58;
+  color: #e6edf5;
+}
+
+#team-map .leaflet-bar a:hover,
+#team-map .leaflet-bar a:focus {
+  background: #1e2f4d;
+  color: #ffffff;
+}
+
+#team-map .leaflet-bar a.leaflet-disabled {
+  background: #10192b;
+  color: #4b5c77;
+}
+
+#team-map .leaflet-control-attribution {
+  background: rgba(14, 22, 38, 0.85);
+  color: #8ea0b8;
+}
+
+#team-map .leaflet-control-attribution a { color: #cbd5e1; }
+
+/* The site-wide focus outline is navy, invisible on the dark map. */
+#team-map *:focus {
+  outline-color: #5eead4;
+}
+
+@media (max-width: 576px) {
+  .um-reach-stats {
+    gap: 0.75rem 1.75rem;
+  }
+
+  .um-reach-stat__num {
+    font-size: 1.7rem;
+  }
+
+  .um-reach-flags {
+    font-size: 1.45rem;
   }
 }
 

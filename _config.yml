@@ -9,9 +9,9 @@
 title: "UM Neutrino Research Group"
 email: gavin.s.davies@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  "Neutrino physics research at the University of Mississippi."
+  Neutrino physics research at the University of Mississippi.
 baseurl: ""
-url: ""
+url: "https://umneutrino.org"
 author: "Dr. Gavin S. Davies"
 keywords: "neutrino, physics, NOvA, DUNE, EMPHATIC, particle physics"
 timezone: "America/Chicago"
@@ -22,26 +22,23 @@ include:
 sass:
   sass_dir: _sass
 
-# Collections for better content management
-collections:
-  news:
-    output: true
-    permalink: /news/:title/
-  publications:
-    output: true
-    permalink: /publications/:title/
-  team:
-    output: true
-    permalink: /team/:title/
+# NOTE(review, Aug 2026): a "collections" block for news/publications/team
+# used to live here, but no _news/_publications/_team directories exist --
+# all of that content is driven by _data/*.yml instead, so the collections
+# config produced empty, unused collections. Removed rather than left as
+# dead config; re-add if this content ever actually moves into collections.
 
 # Plugins
+# NOTE(review, Aug 2026): jekyll-paginate, jekyll-archives, and
+# jekyll-redirect-from were listed here but never configured or used
+# anywhere in the templates (no `paginate:` key, no archives config, no
+# redirect_from front matter), so they silently did nothing. Removed from
+# the active plugin list; the gems are still in the Gemfile if one of
+# these features is wanted later.
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate
-  - jekyll-archives
-  - jekyll-redirect-from
   - jekyll-last-modified-at
 
 # Conversion
@@ -50,8 +47,9 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 # Development settings
-livereload: true
-livereload_port: 35729
+# NOTE(review, Aug 2026): livereload/livereload_port used to be set here, but
+# those are CLI-only flags (`bundle exec jekyll serve --livereload`), not
+# recognized _config.yml keys -- they were silently inert. Removed.
 incremental: false
 
 # Markdown Processing

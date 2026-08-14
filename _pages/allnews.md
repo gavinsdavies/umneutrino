@@ -2,7 +2,6 @@
 title: "News"
 layout: textlay
 excerpt: "UM Neutrino at University of Mississippi."
-sitemap: false
 permalink: /allnews.html
 ---
 

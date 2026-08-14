@@ -2,7 +2,6 @@
 title: "About the website"
 layout: textlay
 excerpt: "About the website."
-sitemap: false
 permalink: /aboutwebsite.html
 ---
 
@@ -12,7 +11,7 @@ permalink: /aboutwebsite.html
 
 This website is built with:
 
-- **[Jekyll](https://jekyllrb.com)** 4.3 - A static site generator that transforms markdown and data files into HTML
+- **[Jekyll](https://jekyllrb.com)** 4 - A static site generator that transforms markdown and data files into HTML
 - **[Bootstrap](https://getbootstrap.com)** 5.3.3 - Modern CSS framework for responsive design
 - **[Bootswatch](https://bootswatch.com)** (Darkly theme) - Styled Bootstrap theme
 - **[Bootstrap Icons](https://icons.getbootstrap.com)** - Comprehensive icon library
@@ -29,16 +28,15 @@ For detailed build instructions, deployment guides, and contribution guidelines,
 
 ## Credits
 
-This website was originally inspired by the excellent [Allan Lab](https://github.com/allanlab/allanlab) template created by the Allan Lab at Leiden University. Since then, it has been significantly modified and extended to meet the specific needs of the UM Neutrino research group, including:
+This site started from the [Allan Lab](https://github.com/allanlab/allanlab) template (Leiden University) and has since diverged quite a bit, including:
 
 - Migration to Bootstrap 5
 - Custom research experiment pages
 - Interactive team map
-- Enhanced news filtering
-- Custom carousel components
-- Darkly theme integration
+- Filterable news list
+- Bootswatch Darkly theme import
 
-We're grateful to the Allan Lab for open-sourcing their original template.
+Thanks to the Allan Lab for open-sourcing the original template.
 
 ## License
 

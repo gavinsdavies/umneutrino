@@ -1,5 +1,37 @@
 ---
 ---
+/*
+==========================================================================
+  CSS layering (read this before adding new styles)
+==========================================================================
+This stylesheet stacks three layers, compiled in this order, later rules
+win on equal specificity:
+
+  1. Vendored Bootstrap + Bootswatch Darkly (imported below). Darkly is a
+     dark theme -- but its dark defaults are NOT what actually renders on
+     most of the site (see 2).
+  2. This file's own "Colour overrides" section further down forces a
+     custom LIGHT palette on top of Darkly for body background/text,
+     headings, .card text, and the footer, using fixed hex literals (e.g.
+     body background #f5f7fa, text #172033). The site is effectively
+     light-themed by default, not dark, despite importing Darkly.
+     (A prior code review assumed this section used a Dracula palette,
+     #282A36/#f8f8f2/etc. -- those hex values don't exist anywhere in this
+     codebase; verified via full-repo grep and a compiled build in the A5/A7
+     review passes, Aug 2026.)
+  3. _sass/enhancements.scss (imported via "base" below), a separate
+     ~500-line design system built around CSS custom properties
+     (--primary-blue, --bg-white, etc.) that redefines several of
+     Bootstrap's own utility classes (.btn, .card, .badge). Since it's
+     imported after Bootstrap/Bootswatch, it usually wins on those
+     classes. This was the actual mechanism behind the badge-color bug
+     fixed in the A1 review pass, and is worth knowing about before
+     restyling .btn/.card/.badge here vs. there.
+
+No full rewrite has been attempted; this comment exists so the next person
+touching site colors/components knows which of the three layers actually
+controls what's on screen instead of re-discovering it by trial and error.
+*/
 @import "bootswatch/dist/darkly/variables";
 @import "bootstrap/bootstrap";
 @import "bootswatch/dist/darkly/bootswatch";
@@ -47,11 +79,8 @@ figcaption {
     margin-bottom: 20px;
 }
 
-pubtit {
+.pubtit {
 	font-weight: bold;
-}
-
-firstp {
 }
 
 .container-fluid {

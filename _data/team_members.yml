@@ -34,7 +34,7 @@
 - name: Dr. Daniel Souza Correia
   photo: bio-photo.jpg
   info: Postdoc; 2026 - present
-  email: email
+  email:
   country: 🏳️
   coordinates: []
   number_educ: 1
@@ -57,7 +57,7 @@
 - name: Xiaoyan Huang
   photo: Xiaoyan.jpg
   info: Ph.D. student; November 2022 - present
-  email: email
+  email:
   country: 🇨🇳
   coordinates:
     - {lat: 35.9, lng: 104.2, name: "China"}
@@ -70,7 +70,7 @@
 - name: Noah Knutson
   photo: bio-photo.jpg
   info: Ph.D. Student; August 2024 - present
-  email: email
+  email:
   country: 🇺🇸
   coordinates:
     - {lat: 42.7, lng: -84.5, name: "United States"}
@@ -82,7 +82,7 @@
 - name: Suyog Badal
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2025 - present
-  email: email
+  email:
   country: 🏳️
   coordinates: []
   number_educ: 1
@@ -94,7 +94,7 @@
 - name: Samantha Reyes
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2026 - present
-  email: email
+  email:
   country: 🏳️
   coordinates: []
   number_educ: 1
@@ -105,7 +105,7 @@
 - name: Chad Byrd
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2026 - present
-  email: email
+  email:
   country: 🏳️
   coordinates: []
   number_educ: 1

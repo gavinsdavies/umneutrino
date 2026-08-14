@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ site.url }}{{ site.baseurl }}/">
-		{{ if eq .Params.custom_title_enabled true }}
-		  {{ .Params.custom_title_value }}
-	  	{{ else }}
-		  {{ "UM Neutrino" }}
-	  	{{ end }}</a>
+		{% if page.custom_title_enabled %}
+		  {{ page.custom_title_value }}
+	  	{% else %}
+		  UM Neutrino
+	  	{% endif %}</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -30,13 +30,5 @@
 	</div>
   </div>
 </nav>
-
-<style>
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-    
-    .dropdown-menu {
-      margin-top: 0; /* Adjust if needed to align with the parent */
-    }
-  </style>
+<!-- .dropdown/.dropdown-menu hover behavior is styled in _sass/enhancements.scss
+     (moved out of an inline <style> block here during the A7 review pass). -->

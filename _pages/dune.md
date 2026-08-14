@@ -2,7 +2,6 @@
 title: "UM Neutrino - DUNE Research"
 layout: experiment
 excerpt: "UM Neutrino -- DUNE Research"
-sitemap: false
 permalink: /research/dune/
 ---
 
@@ -11,16 +10,17 @@ permalink: /research/dune/
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/DUNE.png"  alt="DUNE experiment logo" class="img-fluid" style="height: 50px; float: right;">
 </div>
 
-Work-in-progress, please standby (Sept. 02, 2024)
+Page under construction -- more detail coming soon.
 
-<p>The DUNE (Deep Underground Neutrino Experiment) is a groundbreaking international scientific project aimed at exploring the fundamental properties of neutrinos, the most abundant yet least understood particles in the universe. Located deep underground at the Sanford Underground Research Facility in South Dakota, DUNE seeks to answer critical questions about the nature of matter and the origins of the universe. By studying neutrino oscillations, the experiment hopes to uncover the differences between neutrinos and antineutrinos, providing insights into why the universe is dominated by matter over antimatter. DUNE also aims to detect neutrinos from supernovae, offering a unique glimpse into the processes that fuel star explosions. This ambitious project involves collaboration from scientists and engineers worldwide and is expected to make significant contributions to our understanding of particle physics and cosmology.</p>
+<p>DUNE (Deep Underground Neutrino Experiment) is an international experiment that will send a neutrino beam from Fermilab 800 miles through the Earth to detectors installed nearly a mile underground at the Sanford Underground Research Facility in South Dakota. By comparing neutrino and antineutrino oscillations over that distance, DUNE aims to determine the neutrino mass ordering and search for CP violation in the lepton sector. Its large underground detectors will also be sensitive to neutrinos from a nearby supernova and to proton decay, should either occur during the experiment's run.</p>
 
 {% assign target_experiment = "dune" %}
 {% assign members = site.data.team_members %}
 {% assign member_names = "" %}
 
 {% for member in members %}
-    {% if member.experiments contains target_experiment %}
+    {% assign member_experiments_downcased = member.experiments | join: "," | downcase %}
+    {% if member_experiments_downcased contains target_experiment %}
         {% if member_names != "" %}
             {% assign member_names = member_names | append: ", " %}
         {% endif %}
@@ -32,7 +32,8 @@ Work-in-progress, please standby (Sept. 02, 2024)
 {% assign smember_names = "" %}
 
 {% for smember in smembers %}
-    {% if smember.experiments contains target_experiment %}
+    {% assign smember_experiments_downcased = smember.experiments | join: "," | downcase %}
+    {% if smember_experiments_downcased contains target_experiment %}
         {% if smember_names != "" %}
             {% assign smember_names = smember_names | append: ", " %}
         {% endif %}

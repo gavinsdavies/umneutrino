@@ -2,7 +2,6 @@
 title: "UM Neutrino - NOvA Research"
 layout: experiment
 excerpt: "UM Neutrino -- NOvA Research"
-sitemap: false
 permalink: /research/nova/
 ---
 
@@ -11,16 +10,17 @@ permalink: /research/nova/
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/logopic/NOvA.png"  alt="NOvA experiment logo" class="img-fluid" style="height: 50px; float: right;">
 </div>
 
-Work-in-progress, please standby (Sept. 02, 2024)
+Page under construction -- more detail coming soon.
 
-The NOvA (NuMI Off-Axis Electron Neutrino Appearance) experiment is a prominent particle physics project designed to investigate the mysterious behavior of neutrinos, specifically how they oscillate between different types as they travel. Situated in the United States, NOvA utilizes a powerful particle accelerator at Fermilab to produce a beam of muon neutrinos that travel 500 miles through the Earth to a large detector located in northern Minnesota. By comparing the number and type of neutrinos detected at this distant site with those generated at Fermilab, NOvA aims to uncover fundamental properties of neutrinos, such as the mass ordering and any differences between neutrino and antineutrino behavior. The findings from NOvA could provide crucial insights into the asymmetry between matter and antimatter in the universe, helping to explain why the universe is predominantly composed of matter. NOvA just recently celebrated the milestone of collecting 10 years of neutrino data!
+NOvA (NuMI Off-Axis Electron Neutrino Appearance) studies how neutrinos oscillate between flavors as they travel. Fermilab's NuMI beamline sends muon neutrinos 500 miles through the Earth to NOvA's far detector in northern Minnesota, where they're compared against measurements taken close to the beam. By running in both neutrino and antineutrino mode, NOvA constrains the neutrino mass ordering and looks for differences in how neutrinos and antineutrinos oscillate -- a step toward understanding why the universe is made of matter rather than antimatter. NOvA has now been collecting data for over a decade, building an increasingly precise dataset for its oscillation measurements.
 
 {% assign target_experiment = "nova" %}
 {% assign members = site.data.team_members %}
 {% assign member_names = "" %}
 
 {% for member in members %}
-    {% if member.experiments contains target_experiment %}
+    {% assign member_experiments_downcased = member.experiments | join: "," | downcase %}
+    {% if member_experiments_downcased contains target_experiment %}
         {% if member_names != "" %}
             {% assign member_names = member_names | append: ", " %}
         {% endif %}
@@ -32,7 +32,8 @@ The NOvA (NuMI Off-Axis Electron Neutrino Appearance) experiment is a prominent 
 {% assign smember_names = "" %}
 
 {% for smember in smembers %}
-    {% if smember.experiments contains target_experiment %}
+    {% assign smember_experiments_downcased = smember.experiments | join: "," | downcase %}
+    {% if smember_experiments_downcased contains target_experiment %}
         {% if smember_names != "" %}
             {% assign smember_names = smember_names | append: ", " %}
         {% endif %}
@@ -63,6 +64,8 @@ The NOvA (NuMI Off-Axis Electron Neutrino Appearance) experiment is a prominent 
 {% endfor %}
 -->
 
-![]({{ site.url }}{{ site.baseurl }}/images/respic/.png){: style="width: 70%; float: center; margin: 0px"}
+<!-- TODO(Gavin): add a NOvA overview image (see dune.md's
+     assets/images/respic/DUNE_overview.jpg for the convention) and restore
+     an ![](...) tag pointing at assets/images/respic/<name>.jpg here. -->
 
 

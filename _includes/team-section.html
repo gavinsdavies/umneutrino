@@ -1,0 +1,48 @@
+<!-- Team member card grid. Pass `members` (a list from _data), e.g.
+     include team-section.html with members=site.data.team_members.
+     (Do not put a literal include tag in this comment: Liquid parses HTML
+     comments too, and a self-referencing example recurses until the build
+     dies with "Nesting too deep".)
+     Fields used per member: name, photo, info, country, graduated,
+     current_position, experiments, education1..education5. Cards with no
+     education history and no current position render without the
+     hover/focus overlay. Markup stays flat (under 4 spaces of indentation)
+     because this include renders inside a markdown page and kramdown would
+     otherwise turn indented HTML lines into literal code blocks. -->
+<div class="um-team-grid">
+{%- for member in include.members -%}
+{%- capture um_edu -%}
+{%- for i in (1..5) -%}
+{%- assign um_ekey = "education" | append: i -%}
+{%- assign um_eval = member[um_ekey] -%}
+{%- if um_eval and um_eval != "" -%}<li>{{ um_eval }}</li>{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- assign um_has_overlay = false -%}
+{%- if um_edu != "" or member.current_position -%}{%- assign um_has_overlay = true -%}{%- endif %}
+<article class="um-team-card"{% if um_has_overlay %} tabindex="0"{% endif %}>
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" alt="Photo of {{ member.name }}" class="um-team-card__photo" width="180" height="180" />
+<h3 class="um-team-card__name">{{ member.name }}</h3>
+<p class="um-team-card__info">{{ member.info }}{% if member.graduated %}, {{ member.graduated }}{% endif %}</p>
+{%- if member.current_position %}
+<p class="um-team-card__now">Now: {{ member.current_position }}</p>
+{%- endif %}
+{%- if member.country %}
+<p class="um-team-card__flags">{{ member.country }}</p>
+{%- endif %}
+{%- if member.experiments %}
+<p class="um-team-card__tags">{%- for exp in member.experiments -%}<span class="um-team-chip">{{ exp }}</span>{%- endfor -%}</p>
+{%- endif %}
+{%- if um_has_overlay %}
+<div class="um-team-card__overlay">
+<h4 class="um-team-card__overlay-name">{{ member.name }}</h4>
+<p class="um-team-card__overlay-kicker">Background</p>
+<ul class="um-team-card__edu">
+{{- um_edu -}}
+{%- if member.current_position -%}<li>Now: {{ member.current_position }}</li>{%- endif -%}
+</ul>
+</div>
+{%- endif %}
+</article>
+{%- endfor %}
+</div>

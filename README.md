@@ -63,7 +63,10 @@ To generate the static site:
 bundle exec jekyll build
 ```
 
-The compiled site will be in the `_site/` directory.
+The compiled site will be in the `_site/` directory (gitignored). If you've
+been running `jekyll serve` and switch to `jekyll build` (or vice versa), or
+just see unexpected stale content, run `bundle exec jekyll clean` first to
+clear `_site/` and `.jekyll-cache` before rebuilding.
 
 ## Project Structure
 
@@ -114,12 +117,15 @@ Edit `_data/publist.yml`:
 
 ### Adding News Items
 
-Edit `_data/news.yml`:
+Edit `_data/news.yml`. Dates are free-text strings (not parsed as real dates,
+so match the existing "Nth Month YYYY" style below rather than ISO format):
 
 ```yaml
-- date: 1 January 2024
-  headline: "News headline here"
-  category: milestone  # or team, publication, grant
+- date: 16th July 2025
+  category: milestone  # or team, publication, award, event
+  title: "News item title here"
+  description: A sentence or two of detail.
+  link: https://example.com  # optional
 ```
 
 ## Deployment
