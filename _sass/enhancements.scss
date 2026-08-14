@@ -25,17 +25,21 @@
   --transition-slow: 300ms ease;
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-dark: #f9fafb;
-    --text-gray: #d1d5db;
-    --text-light: #9ca3af;
-    --bg-light: #111827;
-    --bg-white: #1f2937;
-    --border-color: #374151;
-  }
-}
+/* NOTE(review, Aug 2026): a prefers-color-scheme: dark block used to live
+   here, redefining --text-dark/--bg-white/etc. to dark values. The rest of
+   the site (body background, h1-h6 colors, .card p, card-footer, etc. in
+   main.scss) uses fixed hex literals that do NOT respond to that media
+   query, so on a machine with OS dark mode enabled, only the components
+   styled through these CSS custom properties (.card, .badge, the team-card
+   hover overlay) would flip dark while everything else stayed on the fixed
+   light palette -- e.g. .card p text (#3f4b5b, from main.scss) would land
+   on a dark #1f2937 card background at roughly 1.6:1 contrast, well below
+   WCAG AA. Removed rather than partially patched, since the site is
+   light-themed by default (not dark, despite Bootswatch Darkly being
+   imported -- main.scss's "Colour overrides" section forces it light) and
+   doesn't have a complete, deliberate dark-mode implementation to hand off
+   to. Re-add only alongside a full dark-mode pass that also covers the
+   fixed-hex-color elements. */
 
 /* Modern Typography */
 body {
@@ -376,7 +380,8 @@ img {
   min-height: 300px;
 }
 
-.col-sm-6.clearfix:hover {
+.col-sm-6.clearfix:hover,
+.col-sm-6.clearfix:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
 }
@@ -406,8 +411,9 @@ img {
   line-height: 1.2;
 }
 
-/* Move name and title to top on hover */
-.col-sm-6.clearfix:hover h4 {
+/* Move name and title to top on hover (or keyboard focus within the card) */
+.col-sm-6.clearfix:hover h4,
+.col-sm-6.clearfix:focus-within h4 {
   position: absolute;
   top: 1.5rem;
   left: 50%;
@@ -418,7 +424,8 @@ img {
   font-size: 1.25rem;
 }
 
-.col-sm-6.clearfix:hover i {
+.col-sm-6.clearfix:hover i,
+.col-sm-6.clearfix:focus-within i {
   position: absolute;
   top: 3.5rem;
   left: 50%;
@@ -453,8 +460,12 @@ img {
   color: #ffffff !important;
 }
 
-/* Show education list on hover over the entire card */
-.col-sm-6.clearfix:hover ul {
+/* Show education list on hover over the entire card, or when a keyboard
+   user has focused something inside it (e.g. tabindex="0" on the card
+   itself, see team.md) -- otherwise this content was unreachable by
+   keyboard or touch/assistive tech. */
+.col-sm-6.clearfix:hover ul,
+.col-sm-6.clearfix:focus-within ul {
   opacity: 1;
   visibility: visible;
 }

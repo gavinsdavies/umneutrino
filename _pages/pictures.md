@@ -33,11 +33,11 @@ School, July 13-17 2026. Photos to be added once available -- see the
 [school website](https://olemiss-physics.github.io/epic-summer-2026/) and
 [site repository](https://github.com/olemiss-physics/epic-summer-2026) in the meantime.
 
-<!-- TODO(Gavin): drop event photos into assets/images/picpic/epic/ and swap this
-     placeholder figure for a real gallery once available. -->
-<figure>
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/picpic/epic/.jpg" width="60%">
-</figure>
+<!-- TODO(Gavin): drop event photos into assets/images/picpic/epic/ and add a
+     <figure><img src="..." alt="..."></figure> gallery here once available.
+     (This placeholder <img> with an empty filename was removed during the
+     A2/A5 review passes since it 404'd and had no usable alt text -- there's
+     nothing to describe until a real photo exists.) -->
 
 
 ## Outreach

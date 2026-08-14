@@ -24,7 +24,7 @@ permalink: /publications/
 
 <div class="card pub-card clearfix" >
   <pubtit>{{ publi.title }}</pubtit>
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/pubpic/{{ publi.image }}" class="card-image"/>
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/pubpic/{{ publi.image }}" alt="Figure from &quot;{{ publi.title }}&quot;" class="card-image"/>
   <div class="card-content">
   <p>{{ publi.description }}</p>
   <p><em>{{ publi.authors }}</em></p>
