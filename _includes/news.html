@@ -4,10 +4,10 @@
 
     <!-- Filter buttons -->
     <div class="mb-3">
-      <button class="btn btn-xs btn-outline-secondary filter-btn active" data-filter="all">All</button>
-      <button class="btn btn-xs btn-outline-secondary filter-btn" data-filter="team">Team</button>
-      <button class="btn btn-xs btn-outline-secondary filter-btn" data-filter="milestone">Milestones</button>
-      <button class="btn btn-xs btn-outline-secondary filter-btn" data-filter="publication">Publications</button>
+      <button class="btn btn-sm btn-outline-secondary filter-btn active" data-filter="all">All</button>
+      <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="team">Team</button>
+      <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="milestone">Milestones</button>
+      <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="publication">Publications</button>
     </div>
 
     <!-- News items -->
@@ -15,7 +15,7 @@
       {% for article in site.data.news limit:6 %}
         <div class="news-item" data-category="{{ article.category }}">
           <h6 class="card-subtitle mb-2 text-muted">
-            {{ article.date | date: "%B %d, %Y" }}
+            {{ article.date }}
           </h6>
           <h3 class="card-text">
             {{ article.title | markdownify }}

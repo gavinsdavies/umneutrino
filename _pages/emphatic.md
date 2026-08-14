@@ -20,7 +20,8 @@ The EMPHATIC (Experiment to Measure the Production of Hadrons At a Testbeam In C
 {% assign member_names = "" %}
 
 {% for member in members %}
-    {% if member.experiments contains target_experiment %}
+    {% assign member_experiments_downcased = member.experiments | join: "," | downcase %}
+    {% if member_experiments_downcased contains target_experiment %}
         {% if member_names != "" %}
             {% assign member_names = member_names | append: ", " %}
         {% endif %}
@@ -32,7 +33,8 @@ The EMPHATIC (Experiment to Measure the Production of Hadrons At a Testbeam In C
 {% assign smember_names = "" %}
 
 {% for smember in smembers %}
-    {% if smember.experiments contains target_experiment %}
+    {% assign smember_experiments_downcased = smember.experiments | join: "," | downcase %}
+    {% if smember_experiments_downcased contains target_experiment %}
         {% if smember_names != "" %}
             {% assign smember_names = smember_names | append: ", " %}
         {% endif %}

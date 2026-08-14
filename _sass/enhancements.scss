@@ -198,6 +198,9 @@ a:hover {
 }
 
 /* Badge Styles */
+/* Layout only here; background/color are left to Bootstrap's .bg-* / .text-*
+   utilities (e.g. .badge.bg-primary) so category-colored news badges are not
+   overridden back to a flat grey. */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -205,8 +208,6 @@ a:hover {
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 9999px;
-  background: var(--bg-light);
-  color: var(--text-gray);
 }
 
 .badge-primary {
@@ -328,14 +329,18 @@ img {
 }
 
 /* Responsive Images */
-.img-responsive {
+/* .img-responsive is a Bootstrap 3 class kept here for any old content; the
+   site now uses Bootstrap 5's .img-fluid (see team.md), so both are targeted. */
+.img-responsive,
+.img-fluid {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
 /* Team Member Photos - Consistent Sizing */
-.col-sm-6 .img-responsive {
+.col-sm-6 .img-responsive,
+.col-sm-6 .img-fluid {
   width: 200px !important;
   height: 200px !important;
   object-fit: cover;
@@ -346,7 +351,8 @@ img {
 }
 
 /* Gallery Images - Consistent Sizing */
-.col-sm-3 .img-responsive {
+.col-sm-3 .img-responsive,
+.col-sm-3 .img-fluid {
   width: 100% !important;
   height: 200px !important;
   object-fit: cover;

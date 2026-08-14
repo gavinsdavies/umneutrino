@@ -238,14 +238,14 @@ Jump to [staff](#staff), [master and bachelor students](#master-and-bachelor-stu
 </div>
 {% endif %}
 
+{% endfor %}
+
 {% assign even_odd = number_printed | modulo: 2 %}
 {% if even_odd == 1 %}
 </div>
 {% endif %}
 
 ## Alumni - B.Sc.
-
-{% endfor %}
 
 {% for member in site.data.alumni_bsc %}
 

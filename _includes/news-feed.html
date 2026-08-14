@@ -11,7 +11,7 @@
   <div class="news-grid">
     {% for item in site.data.news limit:6 %}
     <article class="news-card" data-category="{{ item.category }}">
-      <div class="news-date">{{ item.date | date: "%B %d, %Y" }}</div>
+      <div class="news-date">{{ item.date }}</div>
       <span class="badge badge-{{ item.category }}">{{ item.category }}</span>
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
