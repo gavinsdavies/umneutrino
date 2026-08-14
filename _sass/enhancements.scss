@@ -226,18 +226,6 @@ img {
   object-fit: cover;
 }
 
-/* Team Member Photos - Consistent Sizing */
-.col-sm-6 .img-responsive,
-.col-sm-6 .img-fluid {
-  width: 200px !important;
-  height: 200px !important;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  margin: 0 auto 1rem auto !important;
-  display: block !important;
-  float: none !important;
-}
-
 /* Gallery Images - Consistent Sizing */
 .col-sm-3 .img-responsive,
 .col-sm-3 .img-fluid {
@@ -248,118 +236,167 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Two-column layout for team member cards */
-.col-sm-6.clearfix {
-  display: flex;
-  flex-direction: column;
+/*
+==========================================================================
+  Team Page: Member Card Grid
+==========================================================================
+Markup lives in _includes/team-section.html; it replaced the old
+.col-sm-6.clearfix card markup in team.md (team.md was the only user of
+those classes, so their rules were removed in the same commit). The
+hover/keyboard-focus education overlay preserves the accessibility
+behaviour added in the A5 review pass: the card carries tabindex="0" so
+:focus-within reveals the overlay for keyboard and touch users too.
+*/
+
+.um-team-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  margin: 1rem 0 2.5rem;
+}
+
+.um-team-card {
   align-items: center;
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
   background: var(--bg-white);
-  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
   box-shadow: var(--shadow-md);
-  transition: all var(--transition-slow);
-  position: relative;
-  min-height: 300px;
-}
-
-.col-sm-6.clearfix:hover,
-.col-sm-6.clearfix:focus-within {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Name and title - visible by default */
-.col-sm-6.clearfix h4,
-.col-sm-6.clearfix i {
-  position: relative;
-  z-index: 11;
-  transition: all var(--transition-slow);
-}
-
-.col-sm-6.clearfix h4 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.col-sm-6.clearfix i {
-  display: block;
-  margin-bottom: 0.75rem;
-  color: var(--text-gray);
-}
-
-/* Make flags larger */
-.col-sm-6.clearfix i {
-  font-size: 1.5rem;
-  line-height: 1.2;
-}
-
-/* Move name and title to top on hover (or keyboard focus within the card) */
-.col-sm-6.clearfix:hover h4,
-.col-sm-6.clearfix:focus-within h4 {
-  position: absolute;
-  top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  color: #ffffff !important;
-  margin: 0;
-  font-size: 1.25rem;
-}
-
-.col-sm-6.clearfix:hover i,
-.col-sm-6.clearfix:focus-within i {
-  position: absolute;
-  top: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  color: #ffffff !important;
-  margin: 0;
-}
-
-/* Hide education list by default */
-.col-sm-6.clearfix ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(37, 99, 235, 0.95);
-  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  padding: 1.5rem 1.25rem 1.25rem;
+  position: relative;
+  text-align: center;
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.um-team-card:hover,
+.um-team-card:focus-within {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* kramdown wraps stray inline content (e.g. the photo) in bare <p> tags
+   when the include renders inside markdown; keep those tight. */
+.um-team-card p:not([class]) {
+  margin: 0;
+}
+
+/* main.scss's #gridid img rule adds its own margins, rounding, and shadow
+   to every image on the page; size and shape the portrait here instead.
+   !important is required to beat that rule's id specificity. */
+.um-team-card__photo {
+  border-radius: 0.6rem !important;
+  box-shadow: none !important;
+  display: block;
+  height: 180px !important;
+  margin: 0 0 1rem !important;
+  object-fit: cover;
+  width: 180px !important;
+}
+
+.um-team-card__name {
+  color: var(--primary-blue);
+  font-size: 1.12rem;
+  margin: 0 0 0.25rem;
+}
+
+.um-team-card__info {
+  color: var(--text-gray);
+  font-size: 0.88rem;
+  margin: 0 0 0.4rem;
+}
+
+.um-team-card__now {
+  color: var(--secondary-cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.um-team-card__flags {
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.um-team-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
   justify-content: center;
-  align-items: flex-start;
-  padding: 6rem 2rem 2rem 2rem;
+  margin: auto 0 0; /* pins the chips to the card bottom for even rows */
+  padding-top: 0.35rem;
+}
+
+.um-team-chip {
+  background: rgba(19, 41, 75, 0.06);
+  border: 1px solid rgba(19, 41, 75, 0.18);
+  border-radius: 9999px;
+  color: var(--primary-blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.6rem;
+  text-transform: uppercase;
+}
+
+/* Education overlay, hidden until hover or keyboard focus. */
+.um-team-card__overlay {
+  backdrop-filter: blur(6px);
+  background: rgba(19, 41, 75, 0.96);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: center;
   margin: 0;
   opacity: 0;
-  visibility: hidden;
-  transition: all var(--transition-slow);
+  overflow-y: auto;
+  padding: 1.5rem;
+  position: absolute;
   text-align: left;
-  list-style-position: inside;
-  z-index: 10;
-  border-radius: 1rem;
-  color: #ffffff !important;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  visibility: hidden;
+  z-index: 5;
 }
 
-/* Show education list on hover over the entire card, or when a keyboard
-   user has focused something inside it (e.g. tabindex="0" on the card
-   itself, see team.md) -- otherwise this content was unreachable by
-   keyboard or touch/assistive tech. */
-.col-sm-6.clearfix:hover ul,
-.col-sm-6.clearfix:focus-within ul {
+.um-team-card:hover .um-team-card__overlay,
+.um-team-card:focus-within .um-team-card__overlay {
   opacity: 1;
   visibility: visible;
 }
 
-/* Better styling for education list items */
-.col-sm-6.clearfix ul li {
-  margin-bottom: 0.5rem;
-  color: #ffffff !important;
-  font-size: 0.95rem;
+.um-team-card__overlay-name {
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin: 0 0 0.15rem;
+}
+
+.um-team-card__overlay-kicker {
+  color: #5eead4;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.um-team-card__edu {
+  color: #ffffff;
+  font-size: 0.9rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.um-team-card__edu li {
+  color: #ffffff;
   font-weight: 500;
+  margin-bottom: 0.45rem;
+}
+
+.um-team-card__edu li:last-child {
+  margin-bottom: 0;
 }
 
 /*
