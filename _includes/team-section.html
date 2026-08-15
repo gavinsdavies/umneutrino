@@ -1,16 +1,26 @@
-<!-- Team member card grid. Pass `members` (a list from _data), e.g.
-     include team-section.html with members=site.data.team_members.
+<!-- Team member card grid. Pass `members` (a list from _data) and, to show
+     only one academic tier, `role` (pi/postdoc/grad/undergrad, matching
+     each member's role: field in _data), e.g. include team-section.html
+     with members=site.data.team_members role="postdoc".
      (Do not put a literal include tag in this comment: Liquid parses HTML
      comments too, and a self-referencing example recurses until the build
      dies with "Nesting too deep".)
      Fields used per member: name, photo, info, country, graduated,
-     current_position, experiments, education1..education5. Cards with no
-     education history and no current position render without the
-     hover/focus overlay. Markup stays flat (under 4 spaces of indentation)
-     because this include renders inside a markdown page and kramdown would
-     otherwise turn indented HTML lines into literal code blocks. -->
+     current_position, experiments, education1..education5, email, inspire,
+     orcid, arxiv, github. Cards with no education history and no current
+     position render without the hover/focus overlay. Academic identifier
+     links only render for fields that actually have a value -- no
+     placeholder/invented profile links. Markup stays flat (under 4 spaces
+     of indentation) because this include renders inside a markdown page
+     and kramdown would otherwise turn indented HTML lines into literal
+     code blocks. -->
+{%- if include.role -%}
+{%- assign um_members = include.members | where: "role", include.role -%}
+{%- else -%}
+{%- assign um_members = include.members -%}
+{%- endif -%}
 <div class="um-team-grid">
-{%- for member in include.members -%}
+{%- for member in um_members -%}
 {%- capture um_edu -%}
 {%- for i in (1..5) -%}
 {%- assign um_ekey = "education" | append: i -%}
@@ -32,6 +42,9 @@
 {%- endif %}
 {%- if member.experiments %}
 <p class="um-team-card__tags">{%- for exp in member.experiments -%}<span class="um-team-chip">{{ exp }}</span>{%- endfor -%}</p>
+{%- endif %}
+{%- if member.inspire or member.orcid or member.arxiv or member.github or member.email %}
+<p class="um-team-card__links">{%- if member.inspire -%}<a href="{{ member.inspire }}" class="um-academic-link" target="_blank" rel="noopener">InspireHEP&nbsp;&#8599;</a>{%- endif -%}{%- if member.orcid -%}<a href="{{ member.orcid }}" class="um-academic-link" target="_blank" rel="noopener">ORCID&nbsp;&#8599;</a>{%- endif -%}{%- if member.arxiv -%}<a href="{{ member.arxiv }}" class="um-academic-link" target="_blank" rel="noopener">arXiv&nbsp;&#8599;</a>{%- endif -%}{%- if member.github -%}<a href="{{ member.github }}" class="um-academic-link" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>{%- endif -%}{%- if member.email -%}<a href="mailto:{{ member.email }}" class="um-academic-link">Email</a>{%- endif -%}</p>
 {%- endif %}
 {%- if um_has_overlay %}
 <div class="um-team-card__overlay">

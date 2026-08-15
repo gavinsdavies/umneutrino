@@ -1,7 +1,9 @@
 - name: Dr. Gavin S. Davies
   photo: Gavin.jpg
   info: Associate Professor; UM Neutrino PI
+  role: pi
   email: gavin.s.davies@gmail.com
+  inspire: https://inspirehep.net/authors/1068224
   country: 🇬🇧 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🏴󠁧󠁢󠁷󠁬󠁳󠁿 🇩🇪
   coordinates:
     - {lat: 54.5, lng: -2.0, name: "United Kingdom"}
@@ -20,6 +22,7 @@
 - name: Dr. Jeffrey Kleykamp
   photo: Jeffrey.jpg
   info: Postdoc; May 2021 - present
+  role: postdoc
   email: jeffrey.kleykamp@gmail.com
   country: 🇺🇸 🇱🇺
   coordinates:
@@ -34,9 +37,11 @@
 - name: Dr. Daniel Souza Correia
   photo: bio-photo.jpg
   info: Postdoc; 2026 - present
+  role: postdoc
   email:
-  country: 🏳️
-  coordinates: []
+  country: 🇧🇷
+  coordinates:
+    - {lat: -14.2, lng: -51.9, name: "Brazil"}
   number_educ: 1
   education1:
   experiments:
@@ -45,7 +50,8 @@
 - name: Bishnu Acharya
   photo: Bishnu.jpg
   info: Ph.D. student; February 2021 - present
-  email: 
+  role: grad
+  email:
   country: 🇳🇵
   coordinates:
     - {lat: 28.4, lng: 84.1, name: "Nepal"}
@@ -57,6 +63,7 @@
 - name: Xiaoyan Huang
   photo: Xiaoyan.jpg
   info: Ph.D. student; November 2022 - present
+  role: grad
   email:
   country: 🇨🇳
   coordinates:
@@ -70,6 +77,7 @@
 - name: Noah Knutson
   photo: bio-photo.jpg
   info: Ph.D. Student; August 2024 - present
+  role: grad
   email:
   country: 🇺🇸
   coordinates:
@@ -78,13 +86,16 @@
   education1:
   experiments:
     - EMPHATIC
+    - DUNE
 
 - name: Suyog Badal
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2025 - present
+  role: undergrad
   email:
-  country: 🏳️
-  coordinates: []
+  country: 🇳🇵
+  coordinates:
+    - {lat: 28.4, lng: 84.1, name: "Nepal"}
   number_educ: 1
   education1:
   experiments:
@@ -94,9 +105,11 @@
 - name: Samantha Reyes
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2026 - present
+  role: undergrad
   email:
-  country: 🏳️
-  coordinates: []
+  country: 🇺🇸
+  coordinates:
+    - {lat: 37.1, lng: -95.7, name: "United States"}
   number_educ: 1
   education1:
   experiments:
@@ -105,10 +118,23 @@
 - name: Chad Byrd
   photo: bio-photo.jpg
   info: Undergraduate researcher; Summer 2026 - present
+  role: undergrad
   email:
-  country: 🏳️
-  coordinates: []
+  country: 🇺🇸
+  coordinates:
+    - {lat: 37.1, lng: -95.7, name: "United States"}
   number_educ: 1
   education1:
   experiments:
     - DUNE
+
+- name: Jake Bass
+  photo: bio-photo.jpg
+  info: Undergraduate researcher; June - July 2026
+  role: undergrad
+  email:
+  country: 🇺🇸
+  coordinates:
+    - {lat: 37.1, lng: -95.7, name: "United States"}
+  number_educ: 1
+  education1:

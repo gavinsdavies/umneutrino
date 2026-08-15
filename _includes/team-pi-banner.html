@@ -1,0 +1,22 @@
+<!-- Principal Investigator banner. Pass `member` (a single record, e.g.
+     site.data.team_members | where: "role", "pi" | first). Reuses the same
+     fields as team-section.html's cards (name, photo, info, experiments,
+     education1..education5, email, inspire, orcid, arxiv, github) but lays
+     them out as one horizontal banner instead of a grid card, since there
+     is exactly one PI. Markup stays flat for the kramdown reason documented
+     in team-section.html. -->
+{%- assign member = include.member -%}
+<article class="um-pi-banner">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/teampic/{{ member.photo }}" alt="Photo of {{ member.name }}" class="um-pi-banner__photo" width="200" height="200" />
+<div class="um-pi-banner__body">
+<p class="um-pi-banner__kicker">Principal Investigator</p>
+<h3 class="um-pi-banner__name">{{ member.name }}</h3>
+<p class="um-pi-banner__info">{{ member.info }}</p>
+{%- if member.experiments %}
+<p class="um-team-card__tags um-pi-banner__tags">{%- for exp in member.experiments -%}<span class="um-team-chip">{{ exp }}</span>{%- endfor -%}</p>
+{%- endif %}
+{%- if member.inspire or member.orcid or member.arxiv or member.github or member.email %}
+<p class="um-team-card__links um-pi-banner__links">{%- if member.inspire -%}<a href="{{ member.inspire }}" class="um-academic-link" target="_blank" rel="noopener">InspireHEP&nbsp;&#8599;</a>{%- endif -%}{%- if member.orcid -%}<a href="{{ member.orcid }}" class="um-academic-link" target="_blank" rel="noopener">ORCID&nbsp;&#8599;</a>{%- endif -%}{%- if member.arxiv -%}<a href="{{ member.arxiv }}" class="um-academic-link" target="_blank" rel="noopener">arXiv&nbsp;&#8599;</a>{%- endif -%}{%- if member.github -%}<a href="{{ member.github }}" class="um-academic-link" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>{%- endif -%}{%- if member.email -%}<a href="mailto:{{ member.email }}" class="um-academic-link">Email</a>{%- endif -%}</p>
+{%- endif %}
+</div>
+</article>

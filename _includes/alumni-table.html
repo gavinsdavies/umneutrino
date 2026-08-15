@@ -1,0 +1,26 @@
+<!-- Alumni table. Pass `members` (a list from _data, e.g. site.data.alumni_members).
+     Fields used: name, info, graduated, current_position, experiments, country.
+     Tabular rather than a card grid: a "Next Destination" column reads
+     better for recruiting than a repeated photo grid, and these records
+     carry no photo worth a large portrait anyway (most alumni share the
+     generic bio-photo.jpg placeholder).
+     Markup stays flat (no indentation) for the same kramdown reason
+     documented in team-section.html. -->
+<div class="um-alumni-table-wrap">
+<table class="um-alumni-table">
+<thead>
+<tr><th>Name</th><th>Degree</th><th>Graduated</th><th>Next Destination</th><th>Experiments</th></tr>
+</thead>
+<tbody>
+{%- for member in include.members -%}
+<tr>
+<td class="um-alumni-table__name">{{ member.name }}</td>
+<td>{{ member.info }}</td>
+<td>{{ member.graduated }}</td>
+<td>{% if member.current_position %}{{ member.current_position }}{% endif %}</td>
+<td>{%- if member.experiments -%}{%- for exp in member.experiments -%}<span class="um-team-chip">{{ exp }}</span>{%- endfor -%}{%- endif -%}</td>
+</tr>
+{%- endfor %}
+</tbody>
+</table>
+</div>
