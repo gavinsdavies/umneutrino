@@ -55,22 +55,52 @@ body {
 	width: 100%; /* Full width */
 	padding: 10px 20px; /* Reduces padding inside the navbar */
 	margin-bottom: 0; /* Removes any margin below the navbar */
+	background-color: #0d1e3a !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+	color: #f8fafc;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+	color: #ffffff;
+}
+
+.navbar .dropdown-menu {
+	background-color: #0d1e3a;
+	border: 1px solid #1e2f4d;
+}
+
+.navbar .dropdown-item {
+	color: #f8fafc;
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+	background-color: #1e2f4d;
+	color: #ffffff;
+}
+
+.navbar .navbar-toggler-icon {
+	filter: invert(1);
 }
 
 h1 {
-	color: #13294b
+	color: #0d1e3a
 }
 h2 {
-	color: #9f1d35
+	color: #c8102e
 }
 h3 {
-	color: #13294b
+	color: #0d1e3a
 }
 h4 {
-	color: #0f766e
+	color: #0284c7
 }
 h5 {
-	color: #5b6675
+	color: #64748b
 }
 
 figcaption {
@@ -106,9 +136,9 @@ figcaption {
 }
 
 /* Team & Publications */
-#gridid img { margin: 16px 22px 6px 0; border-radius:10%; box-shadow: 2px 2px 5px #888888 }
-#homeid img { margin: 0 0 0 0; border-radius:5%; box-shadow: 0px 0px 0px #888888 }
-#picid img { margin: 6px 3px 60px 6px; border-radius:1%; box-shadow: 2px 2px 5px #888888 }
+#gridid img { margin: 16px 22px 6px 0; border-radius: 4px; box-shadow: none; }
+#homeid img { margin: 0 0 0 0; border-radius: 4px; box-shadow: none; }
+#picid img { margin: 6px 3px 60px 6px; border-radius: 4px; box-shadow: none; }
 #gridid .row { margin-bottom: 24px; }
 
 
@@ -141,7 +171,7 @@ figcaption {
 	border: 0px;
 }
 .card-footer {
-	background-color: #13294b;
+	background-color: #0d1e3a;
 }
 
 .card-footer a {
@@ -226,12 +256,11 @@ figcaption {
 }
   
 .card-link .card {
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    border: 1px solid #e2e8f0;
+    transition: border-color 0.2s ease;
 }
-  
+
 .card-link .card:hover {
-    transform: scale(1.11); /* Slightly enlarge the card */
-    box-shadow: 0 4px 8px rgb(206, 26, 26); /* Add shadow to make the card stand out */
-    cursor: pointer; /* Change the cursor to a pointer */
+    border-color: #c8102e; /* Ole Miss crimson hairline, no scale/glow */
+    cursor: pointer;
 }

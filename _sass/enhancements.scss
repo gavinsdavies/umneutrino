@@ -4,18 +4,28 @@
 ==========================================================================
 */
 
-/* CSS Variables for consistent theming */
+/* CSS Variables for consistent theming.
+   Palette anchored in Ole Miss heritage + particle-detector aesthetics
+   (Aug 2026 visual refresh): Oxford navy for structure, Ole Miss crimson
+   for interactive highlights, a Cherenkov-blue accent for links/tags.
+   --secondary-cyan kept as the variable name (still referenced for the
+   team-card "Now:" line) but repointed to that blue rather than the old
+   teal. */
 :root {
-  --primary-blue: #13294b;
-  --primary-purple: #9f1d35;
-  --secondary-cyan: #0f766e;
+  --primary-blue: #0d1e3a;
+  --primary-purple: #c8102e;
+  --secondary-cyan: #0284c7;
   --accent-green: #2f855a;
-  --text-dark: #172033;
-  --text-gray: #5b6675;
+  --text-dark: #1e293b;
+  --text-gray: #64748b;
   --text-light: #7b8794;
-  --bg-light: #f5f7fa;
+  --bg-light: #f8fafc;
   --bg-white: #ffffff;
-  --border-color: #dbe4ea;
+  --border-color: #e2e8f0;
+  --border-color-dark: #cbd5e1;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -75,7 +85,7 @@ h3 {
 
 /* Better Link Styling */
 a {
-  color: var(--primary-blue);
+  color: var(--secondary-cyan);
   text-decoration: none;
   transition: color var(--transition-base);
 }
@@ -84,33 +94,33 @@ a:hover {
   color: var(--primary-purple);
 }
 
-/* Modern Button Styles */
+/* Button Styles: crisp architectural geometry (radius-sm, no floating
+   shadow/lift). Hover is a flat color swap to Ole Miss crimson, the
+   palette's one CTA color. */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
-  border-radius: 0.5rem;
-  transition: all var(--transition-base);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   text-decoration: none;
 }
 
 .btn-primary {
   background: var(--primary-blue);
   color: white;
-  box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: var(--primary-purple);
 }
 
 .btn-outline {
-  border: 2px solid var(--primary-blue);
+  border: 1px solid var(--primary-blue);
   color: var(--primary-blue);
   background: transparent;
 }
@@ -120,19 +130,18 @@ a:hover {
   color: white;
 }
 
-/* Card Components */
+/* Card Components: hairline border, no floating shadow. Hover darkens the
+   border rather than lifting the card off the page. */
 .card {
   background: var(--bg-white);
-  border-radius: 0.5rem;
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
   padding: 1.5rem;
-  transition: all var(--transition-slow);
+  transition: border-color var(--transition-base);
   border: 1px solid var(--border-color);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  border-color: var(--border-color-dark);
 }
 
 .card-body {
@@ -166,17 +175,20 @@ a:hover {
   margin-top: 0; /* Adjust if needed to align with the parent */
 }
 
-/* Badge Styles */
-/* Layout only here; background/color are left to Bootstrap's .bg-* / .text-*
-   utilities (e.g. .badge.bg-primary) so category-colored news badges are not
-   overridden back to a flat grey. */
+/* Badge Styles: rectangular monospace metadata tags rather than rounded
+   pill badges. Layout/type only here; background/color are left to
+   Bootstrap's .bg-* / .text-* utilities (e.g. .badge.bg-primary) so
+   category-colored news badges are not overridden back to a flat grey. */
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 9999px;
+  padding: 0.2rem 0.5rem;
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
 }
 
 /* Focus States for Accessibility */
@@ -193,7 +205,7 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-xs);
 }
 
 /* Responsive Typography */
@@ -232,7 +244,7 @@ img {
   width: 100% !important;
   height: 200px !important;
   object-fit: cover;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   margin-bottom: 1rem;
 }
 
@@ -259,21 +271,19 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
   align-items: center;
   background: var(--bg-white);
   border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   padding: 1.5rem 1.25rem 1.25rem;
   position: relative;
   text-align: center;
-  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+  transition: border-color var(--transition-base);
 }
 
 .um-team-card:hover,
 .um-team-card:focus-within {
-  box-shadow: var(--shadow-xl);
-  transform: translateY(-4px);
+  border-color: var(--border-color-dark);
 }
 
 /* kramdown wraps stray inline content (e.g. the photo) in bare <p> tags
@@ -286,7 +296,8 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
    to every image on the page; size and shape the portrait here instead.
    !important is required to beat that rule's id specificity. */
 .um-team-card__photo {
-  border-radius: 0.6rem !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-xs) !important;
   box-shadow: none !important;
   display: block;
   height: 180px !important;
@@ -329,11 +340,33 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
   padding-top: 0.35rem;
 }
 
+.um-team-card__links {
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  margin: 0.6rem 0 0;
+  padding-top: 0.6rem;
+}
+
+.um-academic-link {
+  color: var(--secondary-cyan);
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.um-academic-link:hover {
+  color: var(--primary-purple);
+}
+
 .um-team-chip {
-  background: rgba(19, 41, 75, 0.06);
-  border: 1px solid rgba(19, 41, 75, 0.18);
-  border-radius: 9999px;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color-dark);
+  border-radius: var(--radius-xs);
   color: var(--primary-blue);
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -344,7 +377,7 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 /* Education overlay, hidden until hover or keyboard focus. */
 .um-team-card__overlay {
   backdrop-filter: blur(6px);
-  background: rgba(19, 41, 75, 0.96);
+  background: rgba(13, 30, 58, 0.96);
   border-radius: inherit;
   display: flex;
   flex-direction: column;
@@ -401,6 +434,113 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 
 /*
 ==========================================================================
+  Team Page: PI Banner + Alumni Table
+==========================================================================
+Markup lives in _includes/team-pi-banner.html and _includes/alumni-table.html.
+*/
+
+.um-pi-banner {
+  align-items: center;
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  gap: 1.75rem;
+  margin: 1rem 0 2.5rem;
+  padding: 1.75rem;
+}
+
+.um-pi-banner__photo {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs) !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+  height: 200px !important;
+  margin: 0 !important;
+  object-fit: cover;
+  width: 200px !important;
+}
+
+.um-pi-banner__kicker {
+  color: var(--primary-purple);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+}
+
+.um-pi-banner__name {
+  color: var(--primary-blue);
+  margin: 0 0 0.25rem;
+}
+
+.um-pi-banner__info {
+  color: var(--text-gray);
+  margin: 0 0 0.6rem;
+}
+
+.um-pi-banner__tags,
+.um-pi-banner__links {
+  justify-content: flex-start;
+}
+
+.um-pi-banner__links {
+  border-top: none;
+  margin-top: 0.6rem;
+  padding-top: 0;
+}
+
+@media (max-width: 576px) {
+  .um-pi-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .um-pi-banner__tags,
+  .um-pi-banner__links {
+    justify-content: center;
+  }
+}
+
+.um-alumni-table-wrap {
+  margin: 1rem 0 2.5rem;
+  overflow-x: auto;
+}
+
+.um-alumni-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.um-alumni-table th,
+.um-alumni-table td {
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.um-alumni-table th {
+  color: var(--text-gray);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.um-alumni-table__name {
+  color: var(--primary-blue);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.um-alumni-table .um-team-chip {
+  margin: 0 0.3rem 0.2rem 0;
+}
+
+/*
+==========================================================================
   Homepage Refresh
 ==========================================================================
 */
@@ -412,7 +552,7 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 
 .um-hero {
   align-items: stretch;
-  background: #13294b;
+  background: #0d1e3a;
   color: #ffffff;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
@@ -480,7 +620,7 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 }
 
 .um-hero__media::after {
-  background: linear-gradient(90deg, rgba(19, 41, 75, 0.76), rgba(19, 41, 75, 0.08));
+  background: linear-gradient(90deg, rgba(13, 30, 58, 0.76), rgba(13, 30, 58, 0.08));
   content: "";
   inset: 0;
   position: absolute;
@@ -508,7 +648,7 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 }
 
 .um-section h2 {
-  color: #13294b;
+  color: #0d1e3a;
   font-size: 2.1rem;
   letter-spacing: 0;
   overflow-wrap: anywhere;
@@ -527,13 +667,12 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 .um-focus-card,
 .um-conf-card {
   background: #ffffff;
-  border: 1px solid #dbe4ea;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 24px rgba(19, 41, 75, 0.08);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
 }
 
 .um-callout {
-  border-left: 5px solid #9f1d35;
+  border-left: 5px solid #c8102e;
   padding: 1.5rem;
 }
 
@@ -541,12 +680,12 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 .um-news-panel h2,
 .um-focus-card h3,
 .um-conf-card span {
-  color: #13294b;
+  color: #0d1e3a;
 }
 
 .um-callout a,
 .um-news-link {
-  color: #9f1d35;
+  color: #c8102e;
   font-weight: 700;
 }
 
@@ -555,13 +694,11 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
   height: 100%;
   padding: 1.5rem;
   text-decoration: none;
-  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  transition: border-color 160ms ease;
 }
 
 .um-focus-card:hover {
-  border-color: #0f766e;
-  box-shadow: 0 14px 30px rgba(19, 41, 75, 0.12);
-  transform: translateY(-3px);
+  border-color: #cbd5e1;
 }
 
 .um-focus-card img {
@@ -574,9 +711,9 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 .um-photo-placeholder {
   align-items: end;
   background:
-    linear-gradient(135deg, rgba(19, 41, 75, 0.86), rgba(15, 118, 110, 0.72)),
+    linear-gradient(135deg, rgba(13, 30, 58, 0.86), rgba(15, 118, 110, 0.72)),
     url("/assets/images/slider/team.jpg") center / cover;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   color: #ffffff;
   display: flex;
   min-height: 300px;
@@ -609,12 +746,12 @@ behaviour added in the A5 review pass: the card carries tabindex="0" so
 }
 
 .um-news-item {
-  border-top: 1px solid #dbe4ea;
+  border-top: 1px solid #e2e8f0;
   padding: 1rem 0;
 }
 
 .um-news-item time {
-  color: #6b7280;
+  color: #64748b;
   display: block;
   font-size: 0.82rem;
   font-weight: 700;
@@ -723,8 +860,7 @@ this stylesheet.
 .um-map-card {
   background: #0e1626;
   border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 24px rgba(19, 41, 75, 0.12);
+  border-radius: var(--radius-sm);
   margin: 0 0 1rem;
   overflow: hidden;
 }
@@ -748,7 +884,7 @@ this stylesheet.
 
 .um-map-footer {
   align-items: center;
-  background: #13294b;
+  background: #0d1e3a;
   color: #cbd5e1;
   display: flex;
   flex-wrap: wrap;
@@ -818,7 +954,7 @@ this stylesheet.
 /* Popup card, dark to match the basemap. */
 #team-map .leaflet-popup-content-wrapper {
   background: #152238;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-sm);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
   color: #e6edf5;
 }
