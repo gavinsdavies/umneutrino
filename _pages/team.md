@@ -12,30 +12,44 @@ custom_title_value: UM Neutrino @ University of Mississippi
  **We are  looking for new PhD students, Postdocs, and Master students to join the team** [(see openings)]({{ site.url }}{{ site.baseurl }}/vacancies) **!**
 
 
-Jump to [global reach](#global-reach), [staff](#staff), [master and bachelor students](#master-and-bachelor-students), [alumni](#alumni), [high school visitors](#high-school-visitors).
+Jump to [global reach](#global-reach), [principal investigator](#principal-investigator), [postdoctoral researchers](#postdoctoral-researchers), [graduate students](#graduate-students), [undergraduate researchers](#undergraduate-researchers), [alumni](#alumni), [high school visitors](#high-school-visitors).
 
 {% include team-map.html %}
 
-## Staff
+{%- assign um_pi = site.data.team_members | where: "role", "pi" | first %}
 
-{% include team-section.html members=site.data.team_members %}
+<a id="principal-investigator"></a>
+## Principal Investigator
 
-## Master and Bachelor Students
+{% include team-pi-banner.html member=um_pi %}
 
-{% include team-section.html members=site.data.students %}
+<a id="postdoctoral-researchers"></a>
+## Postdoctoral Researchers
+
+{% include team-section.html members=site.data.team_members role="postdoc" %}
+
+<a id="graduate-students"></a>
+## Graduate Students
+
+{% include team-section.html members=site.data.team_members role="grad" %}
+
+<a id="undergraduate-researchers"></a>
+## Undergraduate Researchers
+
+{% include team-section.html members=site.data.team_members role="undergrad" %}
 
 <a id="alumni"></a>
 ## Alumni - Ph.D.
 
-{% include team-section.html members=site.data.alumni_members %}
+{% include alumni-table.html members=site.data.alumni_members %}
 
 ## Alumni - M.Sc.
 
-{% include team-section.html members=site.data.alumni_msc %}
+{% include alumni-table.html members=site.data.alumni_msc %}
 
 ## Alumni - B.Sc.
 
-{% include team-section.html members=site.data.alumni_bsc %}
+{% include alumni-table.html members=site.data.alumni_bsc %}
 
 ## High School Visitors
 
