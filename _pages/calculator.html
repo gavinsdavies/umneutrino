@@ -1,0 +1,267 @@
+---
+title: "UM Neutrino - Oscillation Calculator"
+layout: textlay
+excerpt: "Interactive three-flavour neutrino oscillation calculator with non-standard interactions."
+sitemap: false
+permalink: /demo/
+---
+
+<div id="nuosc-root">
+
+  <h1>Neutrino Oscillation Calculator</h1>
+
+  <p class="nuosc-lede">
+    Move the parameters and watch the oscillation probabilities change. Everything is
+    computed live in your browser &mdash; nothing is sent to a server. The physics is a
+    three-flavour PMNS calculation in constant-density matter, with optional
+    non-standard interactions (NSI), ported from
+    <a href="https://github.com/gavinsdavies/nuosclab">nuosclab</a> and checked against
+    it to better than 10<sup>&minus;12</sup> in probability.
+  </p>
+
+  <div class="nuosc-statusbar">
+    <span id="nuosc-status"></span>
+    <span id="nuosc-alias" class="nuosc-alias"></span>
+    <span class="nuosc-timing-wrap">recompute <b id="nuosc-timing">&mdash;</b></span>
+  </div>
+
+  <div class="nuosc-layout">
+
+    <!-- ── Controls ────────────────────────────────────────────────────── -->
+    <aside class="nuosc-controls">
+
+      <section class="nuosc-panel">
+        <h2>Beam &amp; geometry</h2>
+        <div class="nuosc-ctl">
+          <div class="nuosc-ctl-head"><label for="nuosc-experiment">Experiment</label></div>
+          <select id="nuosc-experiment" class="form-select form-select-sm"></select>
+        </div>
+        <div class="nuosc-toggle-row">
+          <button type="button" id="nuosc-antineutrino" class="nuosc-toggle">
+            <span id="nuosc-beam-label">Neutrino beam</span>
+          </button>
+        </div>
+        <div id="nuosc-group-beam"></div>
+      </section>
+
+      <section class="nuosc-panel">
+        <h2>Oscillation parameters</h2>
+        <div class="nuosc-toggle-row">
+          <button type="button" id="nuosc-ordering" class="nuosc-toggle">
+            Mass ordering: <span id="nuosc-ordering-label">Normal</span>
+          </button>
+        </div>
+        <div id="nuosc-group-pmns"></div>
+      </section>
+
+      <section class="nuosc-panel">
+        <h2>Non-standard interactions</h2>
+        <p class="nuosc-hint">
+          Off-diagonal &epsilon; only, matching nuosclab v1. Set all magnitudes to zero
+          for standard oscillations.
+        </p>
+        <div id="nuosc-group-nsi"></div>
+        <button type="button" id="nuosc-zero-nsi" class="nuosc-btn">Zero the NSI</button>
+      </section>
+
+      <section class="nuosc-panel">
+        <h2>Reference curves</h2>
+        <label class="nuosc-check nuosc-nsi-dep">
+          <input type="checkbox" id="nuosc-show-standard" checked>
+          <span>NSI = 0, same PMNS</span>
+        </label>
+        <label class="nuosc-check">
+          <input type="checkbox" id="nuosc-show-nominal">
+          <span>PDG-2024 nominal</span>
+        </label>
+        <button type="button" id="nuosc-reset" class="nuosc-btn">Reset everything</button>
+      </section>
+
+    </aside>
+
+    <!-- ── Plots ───────────────────────────────────────────────────────── -->
+    <main class="nuosc-plots">
+
+      <div class="nuosc-tabbar">
+        <button type="button" class="nuosc-tab active" data-tab="pair">Appearance &amp; disappearance</button>
+        <button type="button" class="nuosc-tab" data-tab="grid">All nine channels</button>
+        <button type="button" class="nuosc-tab" data-tab="residual">NSI residual</button>
+        <button type="button" class="nuosc-btn nuosc-png" id="nuosc-png">Save PNG</button>
+      </div>
+
+      <div class="nuosc-legend">
+        <span class="nuosc-key"><i style="background:#0284c7"></i>live</span>
+        <span class="nuosc-key nuosc-nsi-dep"><i style="background:#c8102e"></i>NSI = 0</span>
+        <span class="nuosc-key"><i style="background:#94a3b8"></i>PDG nominal</span>
+        <span class="nuosc-key"><i style="background:#0d1e3a"></i>readout energy</span>
+      </div>
+
+      <div data-view="pair">
+        <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" id="nuosc-cv-appear"></canvas></div>
+        <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" id="nuosc-cv-disappear"></canvas></div>
+      </div>
+
+      <div data-view="grid" style="display:none">
+        <div class="nuosc-grid">
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-00"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-10"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-20"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-01"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-11"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-21"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-02"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-12"></canvas></div>
+          <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" data-compact="1" id="nuosc-cv-22"></canvas></div>
+        </div>
+      </div>
+
+      <div data-view="residual" style="display:none">
+        <div class="nuosc-cvwrap"><canvas class="nuosc-canvas" id="nuosc-cv-residual"></canvas></div>
+        <p class="nuosc-hint">
+          Green: &nu;<sub>&mu;</sub> &rarr; &nu;<sub>e</sub>. Orange: &nu;<sub>&mu;</sub> &rarr; &nu;<sub>&mu;</sub>.
+          Flat at zero means the NSI you have dialled in is invisible to this experiment.
+        </p>
+      </div>
+
+      <section class="nuosc-panel nuosc-readout">
+        <h2>Probabilities at <span id="nuosc-probe-energy">&mdash;</span></h2>
+        <p class="nuosc-hint">Move the mouse across a plot to change the readout energy.
+          Every parameter box in the panel accepts a typed value, so exact settings can be
+          entered rather than dragged for.</p>
+        <div id="nuosc-probe-table-host"></div>
+
+        <h3>Flavour composition of a &nu;<sub>&mu;</sub> beam at this energy</h3>
+        <div class="nuosc-bar" id="nuosc-composition"></div>
+        <div class="nuosc-bar-legend" id="nuosc-composition-legend"></div>
+      </section>
+
+      <p class="nuosc-credit">
+        Physics engine ported from <a href="https://github.com/gavinsdavies/nuosclab">nuosclab</a>
+        (Davies, MIT licence,
+        <a href="https://doi.org/10.5281/zenodo.21919616">10.5281/zenodo.21919616</a>), which mirrors
+        OscLib's <code>PMNS_NSI</code>. Constants are PDG 2024. The browser engine is held to the
+        Python reference by a golden-file test; see the repository for the validation harness.
+        Parameter settings are stored in the page URL, so a configuration can be linked or cited.
+      </p>
+
+    </main>
+  </div>
+</div>
+
+<style>
+/* Scoped to #nuosc-root so nothing here can leak into the rest of the site.
+   Colours are pulled from the site's own system: the light overrides in
+   assets/css/main.scss (body #f5f7fa / #172033, navbar & h1 #0d1e3a,
+   h2 #c8102e) and the custom properties in _sass/enhancements.scss. Where a
+   token exists it is used via var() with a literal fallback, so this page
+   follows along if the design system is retuned. */
+#nuosc-root { color:#172033; max-width:100%; }
+#nuosc-root h1 { color: var(--primary-blue, #0d1e3a); margin-bottom:.4rem; }
+#nuosc-root .nuosc-lede { color:#334155; max-width:68ch; font-size:.97rem; }
+#nuosc-root h2 { font-size:.8rem; letter-spacing:.07em; text-transform:uppercase;
+  color: var(--primary-blue, #0d1e3a); margin:0 0 .75rem; font-weight:700; }
+/* No text-transform here: uppercasing turns the Greek flavour symbols into
+   Latin look-alikes (nu -> N, mu -> M), which is worse than wrong. */
+#nuosc-root h3 { font-size:.88rem; color: var(--text-gray, #64748b);
+  margin:1.1rem 0 .5rem; font-weight:700; }
+
+.nuosc-statusbar { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:space-between;
+  align-items:center; background: var(--bg-white, #fff);
+  border:1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0,0,0,.05));
+  padding:.55rem .85rem; margin:1rem 0 1.25rem; font-size:.83rem; color:#334155; }
+.nuosc-timing-wrap { color: var(--text-light, #7b8794); }
+.nuosc-timing-wrap b { color: var(--accent-green, #2f855a); font-weight:700; }
+.nuosc-alias { color: var(--primary-purple, #c8102e); font-size:.8rem; font-weight:600; }
+.nuosc-alias:empty { display:none; }
+
+.nuosc-layout { display:grid; grid-template-columns:340px minmax(0,1fr);
+  gap:1.4rem; align-items:start; }
+@media (max-width: 991px) { .nuosc-layout { grid-template-columns:1fr; } }
+
+.nuosc-panel { background: var(--bg-white, #fff);
+  border:1px solid var(--border-color, #e2e8f0); border-radius: var(--radius-md, 6px);
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgba(0,0,0,.05));
+  padding:1rem 1.05rem 1.1rem; margin-bottom:1rem; }
+.nuosc-hint { font-size:.79rem; color: var(--text-gray, #64748b);
+  margin:.1rem 0 .8rem; line-height:1.45; }
+
+.nuosc-ctl { margin-bottom:.8rem; }
+.nuosc-ctl-head { display:flex; justify-content:space-between; align-items:baseline;
+  gap:.5rem; font-size:.83rem; margin-bottom:.25rem; }
+.nuosc-ctl-head label { color:#1e293b; margin:0; font-weight:600; }
+.nuosc-num-wrap { display:inline-flex; align-items:baseline; gap:.3rem; }
+.nuosc-num { width:5.4rem; text-align:right; color: var(--primary-blue, #0d1e3a);
+  background: var(--bg-light, #f8fafc); border:1px solid var(--border-color-dark, #cbd5e1);
+  border-radius: var(--radius-sm, 4px); padding:.1rem .35rem; font-variant-numeric:tabular-nums;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.8rem;
+  font-weight:600; -moz-appearance:textfield; }
+.nuosc-num::-webkit-outer-spin-button, .nuosc-num::-webkit-inner-spin-button {
+  -webkit-appearance:none; margin:0; }
+.nuosc-num:hover { border-color: var(--text-light, #7b8794); }
+.nuosc-num:focus { outline:none; border-color: var(--secondary-cyan, #0284c7);
+  background:#fff; box-shadow:0 0 0 3px rgba(2,132,199,.15); }
+.nuosc-unit { color: var(--text-light, #7b8794); font-size:.72rem; min-width:3.4rem; }
+#nuosc-root input[type=range] { width:100%; accent-color: var(--secondary-cyan, #0284c7); }
+
+.nuosc-toggle-row { margin-bottom:.85rem; }
+.nuosc-toggle, .nuosc-btn { background: var(--bg-light, #f8fafc);
+  border:1px solid var(--border-color-dark, #cbd5e1); color:#1e293b;
+  border-radius: var(--radius-sm, 4px); padding:.35rem .7rem; font-size:.82rem;
+  cursor:pointer; transition: var(--transition-fast, 150ms ease); font-family:inherit; }
+.nuosc-toggle { width:100%; text-align:left; }
+.nuosc-toggle:hover, .nuosc-btn:hover { background:#fff;
+  border-color: var(--secondary-cyan, #0284c7); }
+.nuosc-toggle span { color: var(--primary-blue, #0d1e3a); font-weight:700; }
+.nuosc-btn { margin-top:.5rem; }
+
+.nuosc-check { display:flex; align-items:center; gap:.5rem; font-size:.84rem;
+  color:#1e293b; margin-bottom:.4rem; cursor:pointer; }
+.nuosc-dim { opacity:.45; }
+
+.nuosc-tabbar { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.7rem; align-items:center; }
+.nuosc-tab { background: var(--bg-white, #fff); border:1px solid var(--border-color, #e2e8f0);
+  color: var(--text-gray, #64748b); border-radius: var(--radius-sm, 4px);
+  padding:.35rem .8rem; font-size:.83rem; cursor:pointer; font-family:inherit; }
+.nuosc-tab:hover { border-color: var(--border-color-dark, #cbd5e1); }
+.nuosc-tab.active { background: var(--primary-blue, #0d1e3a); color:#fff;
+  border-color: var(--primary-blue, #0d1e3a); font-weight:600; }
+.nuosc-png { margin-top:0; margin-left:auto; }
+
+.nuosc-legend { display:flex; flex-wrap:wrap; gap:1rem; font-size:.79rem;
+  color: var(--text-gray, #64748b); margin-bottom:.6rem; }
+.nuosc-key { display:inline-flex; align-items:center; gap:.35rem; }
+.nuosc-key i { width:14px; height:3px; border-radius:2px; display:inline-block; }
+
+.nuosc-cvwrap { margin-bottom:1rem; }
+#nuosc-root canvas.nuosc-canvas { display:block; width:100%; cursor:crosshair;
+  border-radius: var(--radius-md, 6px); border:1px solid var(--border-color, #e2e8f0);
+  background:#fff; }
+.nuosc-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.6rem; }
+@media (max-width: 767px) { .nuosc-grid { grid-template-columns:1fr; } }
+
+.nuosc-probe-table { width:100%; border-collapse:collapse; font-size:.84rem;
+  font-variant-numeric:tabular-nums; }
+.nuosc-probe-table th { color: var(--text-gray, #64748b); font-weight:700;
+  padding:.35rem .5rem; text-align:right;
+  border-bottom:1px solid var(--border-color-dark, #cbd5e1); }
+.nuosc-probe-table td { padding:.35rem .5rem; text-align:right;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:#1e293b;
+  border-bottom:1px solid var(--border-color, #e2e8f0); }
+.nuosc-probe-table td.nuosc-strong { color: var(--primary-blue, #0d1e3a); font-weight:700; }
+.nuosc-delta { display:block; font-size:.72rem; }
+
+.nuosc-bar { display:flex; height:26px; border-radius: var(--radius-sm, 4px); overflow:hidden;
+  background: var(--bg-light, #f8fafc); border:1px solid var(--border-color, #e2e8f0); }
+.nuosc-bar-seg { height:100%; }
+.nuosc-bar-legend { display:flex; flex-wrap:wrap; gap:1rem; margin-top:.5rem;
+  font-size:.8rem; color:#334155; }
+.nuosc-bar-legend i { width:12px; height:12px; border-radius:3px; display:inline-block; }
+
+.nuosc-credit { font-size:.78rem; color: var(--text-light, #7b8794); line-height:1.55;
+  margin-top:1.2rem; max-width:80ch; }
+.nuosc-credit a { color: var(--secondary-cyan, #0284c7); }
+</style>
+
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/nuosc-engine.js"></script>
+<script src="{{ site.url }}{{ site.baseurl }}/assets/js/nuosc-app.js"></script>
